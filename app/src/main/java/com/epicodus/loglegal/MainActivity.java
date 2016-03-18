@@ -1,5 +1,6 @@
 package com.epicodus.loglegal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, LogbookActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -61,13 +64,17 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Navigates to LogbookActivity
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_login) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -81,15 +88,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_legal) {
-            // Handle the legal action
+            // Navigates to FindLegalActivity
+            Intent intent = new Intent(this, FindLegalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_logs) {
-
+            // Navigates to LogbookActivity
+            Intent intent = new Intent(this, LogbookActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_camera) {
-
+            // Navigates to CameraActivity
         } else if (id == R.id.nav_settings) {
-
+            // Navigates to SettingsActivity
         } else if (id == R.id.nav_send) {
-
+            // Navigates to SendActivity
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
