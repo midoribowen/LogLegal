@@ -13,19 +13,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    public static final String TAG = MainActivity.class.getSimpleName();
+    @Bind(R.id.findLegalButton) Button mFindLegalButton;
+    @Bind(R.id.fab) FloatingActionButton mLogbookActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // Navigates to FindLegalActivity
+        mFindLegalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FindLegalActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Navigates to LogbookActivity
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        mLogbookActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LogbookActivity.class);
@@ -62,10 +81,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    // Navigates to LoginActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Navigates to LogbookActivity
-
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
