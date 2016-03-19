@@ -25,9 +25,21 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".LogbookActivity" />
-        <activity android:name=".FindLegalActivity"></activity>
+            android:label="@string/title_activity_login">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.loglegal.MainActivity"/>
+        </activity>
+        <activity android:name=".LogbookActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.loglegal.MainActivity"/>
+        </activity>
+        <activity android:name=".FindLegalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.loglegal.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
