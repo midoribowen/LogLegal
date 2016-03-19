@@ -8,6 +8,8 @@
     <string name="find_legal_activity_button_description">law offices near you</string>
     <string name="logbook_activity_button_description">view logbook</string>
 
+    <string name="add_new_incident_title">Add A New Incident</string>
+
     <!-- Strings related to login -->
     <string name="action_settings">Log In</string>
     <string name="title_activity_login">Sign in</string>
