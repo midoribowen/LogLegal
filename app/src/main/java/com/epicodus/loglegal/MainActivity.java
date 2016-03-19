@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         // Navigates to LogbookActivity
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         mLogbookActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

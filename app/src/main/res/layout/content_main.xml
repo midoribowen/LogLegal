@@ -21,12 +21,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Law Offices Near You"
+        android:drawableLeft="@drawable/legal_white"
+        android:drawableStart="@drawable/legal_white"
         android:id="@+id/findLegalButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="52dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorIcons" />
+        android:singleLine="true"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:contentDescription="@string/find_legal_activity_button_description" />
 </RelativeLayout>

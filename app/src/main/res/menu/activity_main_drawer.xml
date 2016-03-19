@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_legal"
-            android:icon="@drawable/legal"
+            android:icon="@drawable/legal_black"
             android:title="Law Offices Near You" />
         <item
             android:id="@+id/nav_logs"
