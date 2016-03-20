@@ -5,10 +5,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="find_legal_activity_button_description">law offices near you</string>
-    <string name="logbook_activity_button_description">view logbook</string>
-
-    <string name="add_new_incident_title">Add A New Incident</string>
+    <string name="add_new_incident_button_description">Add a New Incident</string>
+    <string name="find_legal_activity_button_description">Law Offices Near You</string>
+    <string name="logbook_activity_button_description">View Logbook</string>
 
     <!-- Strings related to login -->
     <string name="action_settings">Log In</string>
@@ -26,12 +25,14 @@
         completions."
     </string>
 
-    <!-- Strings related to LogbookActivity -->
-    <string name="logbook_title">Logbook</string>
-
+    <!-- Strings related to AddNewIncidentActivity -->
+    <string name="add_new_incident_title">Add A New Incident</string>
 
     <!-- Strings related to FindLegalActivity -->
     <string name="find_legal_title">Law Offices Near You</string>
+
+    <!-- Strings related to LogbookActivity -->
+    <string name="logbook_title">Logbook</string>
 
 
 </resources>
