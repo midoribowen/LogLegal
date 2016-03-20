@@ -46,6 +46,9 @@ You will need the following programs installed on your computer.
 
 ## Known Bugs
 
+* If you try to add an incident from MainActivity, a NullPointerException Error runs and the app crashes.
+ * POSSIBLE TEMPORARY FIX: have the add new incident form on LogbookActivity with incidents displaying on the same view.
+
 * If you select Log In in the overflow menu and go to LoginActivity, this does not do anything. Real Log in with authentication is not enabled yet. This is just a preview of this feature.
 
 ###### HAXM Errors

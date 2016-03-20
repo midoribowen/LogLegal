@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.loginButton) Button mLoginButton;
     @Bind(R.id.welcomeMessage) TextView mWelcomeMessage;
 
+    @Bind(R.id.dateInput) EditText mDateInput;
+    @Bind(R.id.timeInput) EditText mTimeInput;
+    @Bind(R.id.witnessesInput) EditText mWitnessesInput;
+    @Bind(R.id.descriptionInput) EditText mDescriptionInput;
+    @Bind(R.id.policeBadgeInput) EditText mPoliceBadgeInput;
+    @Bind(R.id.addIncidentButton) Button mAddIncidentButton;
+
     @Bind(R.id.findLegalButton) Button mFindLegalButton;
     @Bind(R.id.fab) FloatingActionButton mLogbookActivityButton;
 
@@ -46,6 +53,26 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String username = mUsername.getText().toString();
                 mWelcomeMessage.setText("Welcome, " + username + "!");
+            }
+        });
+
+        // Adds a new incident to the Logbook
+        mAddIncidentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date = mDateInput.getText().toString();
+                String time = mTimeInput.getText().toString();
+                String witnesses = mWitnessesInput.getText().toString();
+                String description = mDescriptionInput.getText().toString();
+                String policeBadge = mPoliceBadgeInput.getText().toString();
+
+                Intent intent = new Intent(MainActivity.this, LogbookActivity.class);
+                intent.putExtra("date", date);
+                intent.putExtra("time", time);
+                intent.putExtra("witnesses", witnesses);
+                intent.putExtra("description", description);
+                intent.putExtra("policeBadge", policeBadge);
+                startActivity(intent);
             }
         });
 
