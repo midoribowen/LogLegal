@@ -28,11 +28,25 @@
     <!-- Strings related to AddNewIncidentActivity -->
     <string name="add_new_incident_title">Add A New Incident</string>
 
+    <string name="date_label">Date: </string>
+    <string name="time_label">Time: </string>
+    <string name="witnesses_label">Witnesses: </string>
+    <string name="description_label">Description: </string>
+    <string name="police_badge_label">Police Badge #: </string>
+    <string name="add_incident_button_description">Add Incident</string>
+
     <!-- Strings related to FindLegalActivity -->
     <string name="find_legal_title">Law Offices Near You</string>
 
     <!-- Strings related to LogbookActivity -->
     <string name="logbook_title">Logbook</string>
+    <string name="incident">
+        <!-- date, time, witnesses, description, police badge # -->
+        Date: %1$s  -  Time: %2$s\n
+        Witnesses: %3$s\n
+        Description: %4$s\n
+        Police Badge #: %5$s\n
+    </string>
 
 
 </resources>
