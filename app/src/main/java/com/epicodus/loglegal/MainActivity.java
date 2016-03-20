@@ -22,21 +22,19 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
+    @Bind(R.id.nav_view) NavigationView mNavigationView;
+
     @Bind(R.id.username) EditText mUsername;
     @Bind(R.id.loginButton) Button mLoginButton;
     @Bind(R.id.welcomeMessage) TextView mWelcomeMessage;
 
-    @Bind(R.id.dateInput) EditText mDateInput;
-    @Bind(R.id.timeInput) EditText mTimeInput;
-    @Bind(R.id.witnessesInput) EditText mWitnessesInput;
-    @Bind(R.id.descriptionInput) EditText mDescriptionInput;
-    @Bind(R.id.policeBadgeInput) EditText mPoliceBadgeInput;
-    @Bind(R.id.addIncidentButton) Button mAddIncidentButton;
-
+    @Bind(R.id.addNewIncidentButton) Button mAddNewIncidentButton;
     @Bind(R.id.findLegalButton) Button mFindLegalButton;
-    @Bind(R.id.fab) FloatingActionButton mLogbookActivityButton;
+    @Bind(R.id.logbookActivityButton) FloatingActionButton mLogbookActivityButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,71 +42,55 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
-        // Fake Login with welcome message
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = mUsername.getText().toString();
-                mWelcomeMessage.setText("Welcome, " + username + "!");
-            }
-        });
+        // Click listeners
+            //For Buttons
+        mLoginButton.setOnClickListener(this);
 
-        // Adds a new incident to the Logbook
-        mAddIncidentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String date = mDateInput.getText().toString();
-                String time = mTimeInput.getText().toString();
-                String witnesses = mWitnessesInput.getText().toString();
-                String description = mDescriptionInput.getText().toString();
-                String policeBadge = mPoliceBadgeInput.getText().toString();
+        mAddNewIncidentButton.setOnClickListener(this);
 
-                Intent intent = new Intent(MainActivity.this, LogbookActivity.class);
-                intent.putExtra("date", date);
-                intent.putExtra("time", time);
-                intent.putExtra("witnesses", witnesses);
-                intent.putExtra("description", description);
-                intent.putExtra("policeBadge", policeBadge);
-                startActivity(intent);
-            }
-        });
+        mFindLegalButton.setOnClickListener(this);
 
-        // Navigates to FindLegalActivity
-        mFindLegalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FindLegalActivity.class);
-                startActivity(intent);
-            }
-        });
+        mLogbookActivityButton.setOnClickListener(this);
 
-        // Navigates to LogbookActivity
-        mLogbookActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LogbookActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            // Fo Drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.setNavigationItemSelectedListener(this);
+
+    } // END onCreate
+
+
+    // Handles button clicks for showing welcome message for fake login, navigating to findLegalActivity, and navigating to LogbookActivity
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.loginButton:
+                String username = mUsername.getText().toString();
+                mWelcomeMessage.setText("Welcome, " + username + "!");
+                break;
+            case R.id.addNewIncidentButton:
+                Intent addNewIncidentActivityIntent = new Intent(MainActivity.this, AddNewIncidentActivity.class);
+                startActivity(addNewIncidentActivityIntent);
+                break;
+            case R.id.findLegalButton:
+                Intent findLegalActivityIntent = new Intent(MainActivity.this, FindLegalActivity.class);
+                startActivity(findLegalActivityIntent);
+                break;
+            case R.id.logbookActivityButton:
+                Intent logbookActivityIntent = new Intent(MainActivity.this, LogbookActivity.class);
+                startActivity(logbookActivityIntent);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -149,12 +131,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_legal) {
             // Navigates to FindLegalActivity
-            Intent intent = new Intent(this, FindLegalActivity.class);
-            startActivity(intent);
         } else if (id == R.id.nav_logs) {
             // Navigates to LogbookActivity
-            Intent intent = new Intent(this, LogbookActivity.class);
-            startActivity(intent);
         } else if (id == R.id.nav_camera) {
             // Navigates to CameraActivity
         } else if (id == R.id.nav_settings) {
