@@ -1,12 +1,12 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Friday March 18th, 2016
+#### A legal logbook for users to track incidents, Sunday March 20th, 2016
 
 #### By Midori Bowen
 
 ## Description
 
-Log Legal is a logbook where users can enter and track incidents. Each incident has a date, a time, witnesses, description, and a police badge number (optional). This application is an independent project for the March 2016 Android class at Epicodus.
+Log Legal is a logbook where users can enter and track incidents. Each incident has a date, a time, witnesses, description, and a police badge number (optional). This application is an independent project for the March 2016 Android class at Epicodus. It is a project that builds each week and therefore demonstrates the week's lessons at the end of each week.
 A User can:
 * add an incident to their logbook, which they can view and sort
 * change their settings (username, password)
@@ -45,9 +45,6 @@ You will need the following programs installed on your computer.
 * Wait... it takes a little while the first time
 
 ## Known Bugs
-
-* If you try to add an incident from MainActivity, a NullPointerException Error runs and the app crashes.
- * POSSIBLE TEMPORARY FIX: have the add new incident form on LogbookActivity with incidents displaying on the same view.
 
 * If you select Log In in the overflow menu and go to LoginActivity, this does not do anything. Real Log in with authentication is not enabled yet. This is just a preview of this feature.
 
