@@ -131,8 +131,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_legal) {
             // Navigates to FindLegalActivity
+            Intent intent = new Intent(this, FindLegalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_logs) {
             // Navigates to LogbookActivity
+            Intent intent = new Intent(this, LogbookActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_camera) {
             // Navigates to CameraActivity
         } else if (id == R.id.nav_settings) {
