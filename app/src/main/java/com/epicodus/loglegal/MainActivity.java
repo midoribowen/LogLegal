@@ -28,12 +28,13 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
     @Bind(R.id.nav_view) NavigationView mNavigationView;
 
-    @Bind(R.id.username) EditText mUsername;
-    @Bind(R.id.loginButton) Button mLoginButton;
-    @Bind(R.id.welcomeMessage) TextView mWelcomeMessage;
-
+    @Bind(R.id.dateInput) EditText mDateInput;
+    @Bind(R.id.timeInput) EditText mTimeInput;
+    @Bind(R.id.witnessesInput) EditText mWitnessesInput;
+    @Bind(R.id.descriptionInput) EditText mDescriptionInput;
+    @Bind(R.id.policeBadgeInput) EditText mPoliceBadgeInput;
     @Bind(R.id.addNewIncidentButton) Button mAddNewIncidentButton;
-    @Bind(R.id.findLegalButton) Button mFindLegalButton;
+
     @Bind(R.id.logbookActivityButton) FloatingActionButton mLogbookActivityButton;
 
     @Override
@@ -46,15 +47,11 @@ public class MainActivity extends AppCompatActivity
 
         // Click listeners
             //For Buttons
-        mLoginButton.setOnClickListener(this);
-
         mAddNewIncidentButton.setOnClickListener(this);
-
-        mFindLegalButton.setOnClickListener(this);
 
         mLogbookActivityButton.setOnClickListener(this);
 
-            // Fo Drawer
+            // For Drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(toggle);
@@ -65,25 +62,34 @@ public class MainActivity extends AppCompatActivity
     } // END onCreate
 
 
-    // Handles button clicks for showing welcome message for fake login, navigating to findLegalActivity, and navigating to LogbookActivity
+    // Handles button clicks for adding a new incident, navigating to findLegalActivity, and navigating to LogbookActivity
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.loginButton:
-                String username = mUsername.getText().toString();
-                mWelcomeMessage.setText("Welcome, " + username + "!");
-                break;
             case R.id.addNewIncidentButton:
-                Intent addNewIncidentActivityIntent = new Intent(MainActivity.this, AddNewIncidentActivity.class);
+                String date = mDateInput.getText().toString();
+                String time = mTimeInput.getText().toString();
+                String witnesses = mWitnessesInput.getText().toString();
+                String description = mDescriptionInput.getText().toString();
+                String policeBadge = mPoliceBadgeInput.getText().toString();
+
+                Intent addNewIncidentActivityIntent = new Intent(this, LogbookActivity.class);
+
+                addNewIncidentActivityIntent.putExtra("date", date);
+                addNewIncidentActivityIntent.putExtra("time", time);
+                addNewIncidentActivityIntent.putExtra("witnesses", witnesses);
+                addNewIncidentActivityIntent.putExtra("description", description);
+                addNewIncidentActivityIntent.putExtra("policeBadge", policeBadge);
                 startActivity(addNewIncidentActivityIntent);
                 break;
             case R.id.findLegalButton:
-                Intent findLegalActivityIntent = new Intent(MainActivity.this, FindLegalActivity.class);
+                Intent findLegalActivityIntent = new Intent(this, FindLegalActivity.class);
                 startActivity(findLegalActivityIntent);
                 break;
             case R.id.logbookActivityButton:
-                Intent logbookActivityIntent = new Intent(MainActivity.this, LogbookActivity.class);
+                Intent logbookActivityIntent = new Intent(this, LogbookActivity.class);
                 startActivity(logbookActivityIntent);
+                break;
         }
     }
 

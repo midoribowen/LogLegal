@@ -40,11 +40,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.loglegal.MainActivity" />
         </activity>
-        <activity android:name=".AddNewIncidentActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.loglegal.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

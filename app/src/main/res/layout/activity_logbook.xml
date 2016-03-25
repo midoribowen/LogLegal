@@ -9,24 +9,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.epicodus.loglegal.LogbookActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/logbook_title"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryText" />
+        android:showDividers="end"
+        android:orientation="vertical"
+        android:divider="@drawable/divider_drawable"
+        android:id="@+id/linearLayout">
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/logbook_title"
+            android:id="@+id/logbookTitle"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryText" />
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_below="@+id/logbookTitle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/incident"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="New Text" />
+
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/incident"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="New Text" />
+        android:drawableLeft="@drawable/legal_white"
+        android:drawableStart="@drawable/legal_white"
+        android:id="@+id/findLegalButton"
+        android:background="@color/colorPrimaryDark"
+        android:singleLine="true"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:contentDescription="@string/find_legal_activity_button_description"
+        android:text="@string/find_legal_activity_button_description"
+        android:textColor="@color/colorIcons"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

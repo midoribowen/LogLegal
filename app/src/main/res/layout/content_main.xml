@@ -12,106 +12,161 @@
     tools:context="com.epicodus.loglegal.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:showDividers="end"
-        android:orientation="vertical"
-        android:divider="@drawable/divider_drawable"
-        android:id="@+id/linearLayout">
-
-        <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/username"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Username" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/password"
-            android:layout_below="@+id/username"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:hint="Password" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="82dp"
-                android:layout_height="wrap_content"
-                android:text="Log In"
-                android:id="@+id/loginButton"
-                android:textColor="@color/colorIcons"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginLeft="43dp"
-                android:layout_marginStart="43dp"
-                android:layout_alignBottom="@+id/password"
-                android:layout_toRightOf="@+id/username"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/welcomeMessage"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/add_white"
-        android:drawableStart="@drawable/add_white"
-        android:text="@string/add_new_incident_button_description"
-        android:id="@+id/addNewIncidentButton"
-        android:layout_below="@+id/welcomeMessage"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/addNewIncidentTitle"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorIcons"
-        android:textSize="20sp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:contentDescription="@string/add_new_incident_button_description" />
+        android:text="@string/add_new_incident_title"
+        android:textColor="@color/colorPrimaryText" />
 
-    <Button
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/legal_white"
-        android:drawableStart="@drawable/legal_white"
-        android:id="@+id/findLegalButton"
-        android:background="@color/colorPrimaryDark"
-        android:singleLine="true"
-        android:paddingStart="20dp"
-        android:paddingLeft="20dp"
-        android:paddingEnd="20dp"
-        android:paddingRight="20dp"
-        android:contentDescription="@string/find_legal_activity_button_description"
-        android:text="@string/find_legal_activity_button_description"
-        android:textColor="@color/colorIcons"
-        android:layout_marginTop="67dp"
-        android:layout_below="@+id/welcomeMessage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20sp" />
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/addNewIncidentTitle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/add_new_incident_title"
+                android:id="@+id/add_new_incident_title" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/add_new_incident_title">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/date_label"
+                        android:id="@+id/dateLabel" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:ems="10"
+                        android:id="@+id/dateInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time_label"
+                        android:id="@+id/timeLabel" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:ems="10"
+                        android:id="@+id/timeInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/witnesses_label"
+                        android:id="@+id/witnessesLabel" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:ems="10"
+                        android:id="@+id/witnessesInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description_label"
+                        android:id="@+id/descriptionLabel" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:ems="10"
+                        android:id="@+id/descriptionInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/police_badge_label"
+                        android:id="@+id/policeBadgeLabel" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/policeBadgeInput"
+                        android:layout_weight="0.77"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/add_white"
+                        android:drawableStart="@drawable/add_white"
+                        android:text="@string/add_new_incident_button_description"
+                        android:id="@+id/addNewIncidentButton"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/colorAccent"
+                        android:textColor="@color/colorIcons"
+                        android:textSize="20sp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingStart="20dp"
+                        android:contentDescription="@string/add_new_incident_button_description" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
