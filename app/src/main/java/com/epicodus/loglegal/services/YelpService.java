@@ -1,6 +1,9 @@
-package com.epicodus.loglegal;
+package com.epicodus.loglegal.services;
 
 import android.content.Context;
+
+import com.epicodus.loglegal.R;
+import com.epicodus.loglegal.models.Legal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +41,7 @@ public class YelpService {
                 .addInterceptor(new SigningInterceptor(consumer))
                 .build();
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v2/search/?term=legal%20services&limit=10&radius_filter=8000").newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://api.yelp.com/v2/search/?term=legal services&sort=1&limit=20").newBuilder();
         urlBuilder.addQueryParameter("location", zipcode);
         String url = urlBuilder.build().toString();
 

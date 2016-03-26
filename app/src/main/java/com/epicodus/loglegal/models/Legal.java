@@ -1,4 +1,4 @@
-package com.epicodus.loglegal;
+package com.epicodus.loglegal.models;
 
 import java.util.ArrayList;
 

@@ -1,13 +1,16 @@
-package com.epicodus.loglegal;
+package com.epicodus.loglegal.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.CharacterPickerDialog;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.epicodus.loglegal.models.Legal;
+import com.epicodus.loglegal.R;
+import com.epicodus.loglegal.services.YelpService;
 
 import java.io.IOException;
 import java.util.ArrayList;

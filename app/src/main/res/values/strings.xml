@@ -40,6 +40,7 @@
 
     <!-- Strings related to FindLegalActivity -->
     <string name="find_legal_title">Find Law Offices</string>
+    <string name="query_term">legal services</string>
 
     <!-- Strings related to LogbookActivity -->
     <string name="logbook_title">Logbook</string>
