@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.Legal;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,7 @@ public class LegalListAdapter extends RecyclerView.Adapter<LegalListAdapter.Lega
         }
 
         public void bindLegal(Legal legal) {
+            Picasso.with(mContext).load(legal.getImageUrl()).fit().centerCrop().into(mLegalImageView);
             mLegalNameTextView.setText(legal.getName());
             mLegalCategoryTextView.setText(legal.getCategories().get(0));
             mLegalAddressTextView.setText(android.text.TextUtils.join(", ", legal.getShortAddress()));
