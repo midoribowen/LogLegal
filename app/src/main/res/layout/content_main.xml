@@ -30,7 +30,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,7 +153,6 @@
                         android:drawableStart="@drawable/add_white"
                         android:text="@string/add_new_incident_button_description"
                         android:id="@+id/addNewIncidentButton"
-                        android:layout_centerHorizontal="true"
                         android:background="@color/colorAccent"
                         android:textColor="@color/colorIcons"
                         android:textSize="20sp"

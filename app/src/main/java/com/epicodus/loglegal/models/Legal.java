@@ -9,17 +9,19 @@ public class Legal {
     private double mRating;
     private String mImageUrl;
     private ArrayList<String> mAddress = new ArrayList<>();
+    private ArrayList<String> mShortAddress = new ArrayList<>();
     private double mLatitude;
     private double mLongitude;
     private ArrayList<String> mCategories = new ArrayList<>();
 
-    public Legal(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
+    public Legal(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, ArrayList<String> shortAddress, double latitude, double longitude, ArrayList<String> categories) {
         this.mName = name;
         this.mPhone = phone;
         this.mWebsite = website;
         this.mRating = rating;
         this.mImageUrl = imageUrl;
         this.mAddress = address;
+        this.mShortAddress = shortAddress;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
         this.mCategories = categories;
@@ -47,6 +49,10 @@ public class Legal {
 
     public ArrayList<String> getAddress() {
         return mAddress;
+    }
+
+    public ArrayList<String> getShortAddress() {
+        return mShortAddress;
     }
 
     public double getLatitude() {

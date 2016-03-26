@@ -3,11 +3,14 @@ package com.epicodus.loglegal.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.epicodus.loglegal.adapters.LegalListAdapter;
 import com.epicodus.loglegal.models.Legal;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.services.YelpService;
@@ -25,11 +28,10 @@ public class FindLegalActivity extends AppCompatActivity {
     public static final String TAG = FindLegalActivity.class.getSimpleName();
 
     @Bind(R.id.searchQuery) TextView mSearchQuery;
-    public ArrayList<Legal> mLegalOffices = new ArrayList<>();
-    @Bind(R.id.legalOfficesListView) ListView mLegalOfficesListView;
 
-//    @Bind(R.id.lawOfficesList) ListView mLawOfficesList;
-//    String[] lawOffices;
+    @Bind(R.id.legalOfficesRecyclerView) RecyclerView mLegalOfficesRecyclerView;
+    private LegalListAdapter mAdapter;
+    public ArrayList<Legal> mLegalOffices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,6 @@ public class FindLegalActivity extends AppCompatActivity {
         mSearchQuery.setText("You Searched: " + zipcode);
 
         getLegalOffices(zipcode);
-
-//        lawOffices = getResources().getStringArray(R.array.law_offices);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lawOffices);
-//        mLawOfficesList.setAdapter(adapter);
     }
 
     private void getLegalOffices(String zipcode) {
@@ -65,22 +62,13 @@ public class FindLegalActivity extends AppCompatActivity {
                 FindLegalActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] legalNames = new String[mLegalOffices.size()];
-                        for (int i = 0; i < legalNames.length; i++) {
-                            legalNames[i] = mLegalOffices.get(i).getName();
-                        }
-                        ArrayAdapter adapter = new ArrayAdapter(FindLegalActivity.this, android.R.layout.simple_list_item_1, legalNames);
-                        mLegalOfficesListView.setAdapter(adapter);
+                        mAdapter = new LegalListAdapter(getApplicationContext(), mLegalOffices);
 
-                        for (Legal legal : mLegalOffices) {
-                            Log.d(TAG, "Name: " + legal.getName());
-                            Log.d(TAG, "Phone: " + legal.getPhone());
-                            Log.d(TAG, "Website: " + legal.getWebsite());
-                            Log.d(TAG, "Image url: " + legal.getImageUrl());
-                            Log.d(TAG, "Rating: " + legal.getRating());
-                            Log.d(TAG, "Address: " + android.text.TextUtils.join(", ", legal.getAddress()));
-                            Log.d(TAG, "Categories: " + legal.getCategories().toString());
-                        }
+                        mLegalOfficesRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindLegalActivity.this);
+                        mLegalOfficesRecyclerView.setLayoutManager(layoutManager);
+                        mLegalOfficesRecyclerView.setHasFixedSize(true);
+                        mLegalOfficesRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), R.drawable.divider_shape));
                     }
                 });
             }

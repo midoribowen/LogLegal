@@ -72,6 +72,14 @@ public class YelpService {
                             .getJSONObject("coordinate").getDouble("latitude");
                     double longitude = legalJSON.getJSONObject("location")
                             .getJSONObject("coordinate").getDouble("longitude");
+
+                    ArrayList<String> shortAddress = new ArrayList<>();
+                    JSONArray shortAddressJSON = legalJSON.getJSONObject("location")
+                            .getJSONArray("address");
+                    for (int y = 0; y < shortAddressJSON.length(); y++) {
+                        shortAddress.add(shortAddressJSON.get(y).toString());
+                    }
+
                     ArrayList<String> address = new ArrayList<>();
                     JSONArray addressJSON = legalJSON.getJSONObject("location")
                             .getJSONArray("display_address");
@@ -86,7 +94,7 @@ public class YelpService {
                     for (int y = 0; y < categoriesJSON.length(); y++) {
                         categories.add(categoriesJSON.getJSONArray(y).get(0).toString());
                     }
-                    Legal legal = new Legal(name, phone, website, rating, imageUrl, address, latitude, longitude, categories);
+                    Legal legal = new Legal(name, phone, website, rating, imageUrl, address, shortAddress, latitude, longitude, categories);
                     legalOffices.add(legal);
                 }
             }
