@@ -61,8 +61,12 @@ public class LegalListAdapter extends RecyclerView.Adapter<LegalListAdapter.Lega
 
         public void bindLegal(Legal legal) {
             Picasso.with(mContext).load(legal.getImageUrl()).fit().centerCrop().into(mLegalImageView);
-            mLegalNameTextView.setText(legal.getName());
-            mLegalCategoryTextView.setText(legal.getCategories().get(0));
+            if (legal.getName().length() > 31) {
+                mLegalNameTextView.setText(legal.getName().substring(0, 31) + "...");
+            } else {
+                mLegalNameTextView.setText(legal.getName());
+            }
+            mLegalCategoryTextView.setText(android.text.TextUtils.join(", ", legal.getCategories()));
             mLegalAddressTextView.setText(android.text.TextUtils.join(", ", legal.getShortAddress()));
             mLegalRatingTextView.setText("Rating: " + legal.getRating() + "/5");
         }
