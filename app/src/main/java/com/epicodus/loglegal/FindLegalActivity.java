@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,7 +19,11 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class FindLegalActivity extends AppCompatActivity {
+    public static final String TAG = FindLegalActivity.class.getSimpleName();
+
     @Bind(R.id.searchQuery) TextView mSearchQuery;
+    public ArrayList<Legal> mLegalOffices = new ArrayList<>();
+    @Bind(R.id.legalOfficesListView) ListView mLegalOfficesListView;
 
 //    @Bind(R.id.lawOfficesList) ListView mLawOfficesList;
 //    String[] lawOffices;
@@ -33,7 +38,7 @@ public class FindLegalActivity extends AppCompatActivity {
         String zipcode = findLegalActivityIntent.getStringExtra("zipcode");
         mSearchQuery.setText("You Searched: " + zipcode);
 
-        getLawyer(zipcode);
+        getLegalOffices(zipcode);
 
 //        lawOffices = getResources().getStringArray(R.array.law_offices);
 //
@@ -41,25 +46,40 @@ public class FindLegalActivity extends AppCompatActivity {
 //        mLawOfficesList.setAdapter(adapter);
     }
 
-    private void getLawyer(String zipcode) {
+    private void getLegalOffices(String zipcode) {
         final YelpService yelpService = new YelpService(this);
 
-        yelpService.findLegal(zipcode, new Callback() {
+        yelpService.findLegalOffices(zipcode, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    if (response.isSuccessful()) {
-                        Log.i("JSON DATA", jsonData);
+            public void onResponse(Call call, Response response) {
+                mLegalOffices = yelpService.processResults(response);
+
+                FindLegalActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] legalNames = new String[mLegalOffices.size()];
+                        for (int i = 0; i < legalNames.length; i++) {
+                            legalNames[i] = mLegalOffices.get(i).getName();
+                        }
+                        ArrayAdapter adapter = new ArrayAdapter(FindLegalActivity.this, android.R.layout.simple_list_item_1, legalNames);
+                        mLegalOfficesListView.setAdapter(adapter);
+
+                        for (Legal legal : mLegalOffices) {
+                            Log.d(TAG, "Name: " + legal.getName());
+                            Log.d(TAG, "Phone: " + legal.getPhone());
+                            Log.d(TAG, "Website: " + legal.getWebsite());
+                            Log.d(TAG, "Image url: " + legal.getImageUrl());
+                            Log.d(TAG, "Rating: " + legal.getRating());
+                            Log.d(TAG, "Address: " + android.text.TextUtils.join(", ", legal.getAddress()));
+                            Log.d(TAG, "Categories: " + legal.getCategories().toString());
+                        }
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                });
             }
         });
     }

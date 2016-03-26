@@ -2,7 +2,7 @@ package com.epicodus.loglegal;
 
 import java.util.ArrayList;
 
-public class Lawyer {
+public class Legal {
     private String mName;
     private String mPhone;
     private String mWebsite;
@@ -13,7 +13,7 @@ public class Lawyer {
     private double mLongitude;
     private ArrayList<String> mCategories = new ArrayList<>();
 
-    public Lawyer(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
+    public Legal(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
         this.mName = name;
         this.mPhone = phone;
         this.mWebsite = website;
