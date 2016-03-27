@@ -1,6 +1,6 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Sunday March 20th, 2016
+#### A legal logbook for users to track incidents, Sunday March 27th, 2016
 
 #### By Midori Bowen
 
@@ -11,6 +11,7 @@ A User can:
 * add an incident to their logbook, which they can view and sort
 * change their settings (username, password)
 * view law offices and advocacy organizations near them on a map with a list of places below
+* click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's Google Maps app
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
