@@ -34,6 +34,8 @@ public class FindLegalDetailFragment extends Fragment {
     @Bind(R.id.sendEmailButton) Button mSendEmailButton;
 
     private Legal mLegal;
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
 
     public static FindLegalDetailFragment newInstance(Legal legal) {
         FindLegalDetailFragment findLegalDetailFragment = new FindLegalDetailFragment();
@@ -55,7 +57,12 @@ public class FindLegalDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_find_legal_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mLegal.getImageUrl()).into(mLegalImageView);
+        Picasso.with(view.getContext())
+                .load(mLegal.getImageUrl())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerInside()
+                .into(mLegalImageView);
+
         mLegalNameTextView.setText(mLegal.getName());
         mLegalCategoryTextView.setText(android.text.TextUtils.join(", ", mLegal.getCategories()));
         mLegalRatingTextView.setText(Double.toString(mLegal.getRating()) + "/5");
