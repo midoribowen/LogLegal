@@ -38,7 +38,7 @@
     </string>
 
 
-    <!-- Strings related to FindLegalActivity -->
+    <!-- Strings related to FindLegalListActivity -->
     <string name="find_legal_title">Find Law Offices</string>
     <string name="find_legal_map_description">A GoogleMap of all law offices found</string>
     <string name="query_term">legal services</string>
@@ -56,5 +56,8 @@
     <string name="find_legal_search_title">Find a Lawyer by Location</string>
     <string name="find_legal_input_hint">Enter Zip Code</string>
     <string name="find_legal_activity_button_description">Find Law Offices</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

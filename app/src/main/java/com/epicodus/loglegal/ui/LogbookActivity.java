@@ -49,7 +49,7 @@ public class LogbookActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.findLegalButton:
                 String zipcode = mZipcodeInput.getText().toString();
 
-                Intent findLegalActivityIntent = new Intent(this, FindLegalActivity.class);
+                Intent findLegalActivityIntent = new Intent(this, FindLegalListActivity.class);
                 findLegalActivityIntent.putExtra("zipcode", zipcode);
                 startActivity(findLegalActivityIntent);
                 break;

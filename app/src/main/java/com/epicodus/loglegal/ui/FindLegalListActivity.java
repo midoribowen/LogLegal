@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.loglegal.adapters.LegalListAdapter;
@@ -24,8 +21,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class FindLegalActivity extends AppCompatActivity {
-    public static final String TAG = FindLegalActivity.class.getSimpleName();
+public class FindLegalListActivity extends AppCompatActivity {
+    public static final String TAG = FindLegalListActivity.class.getSimpleName();
 
     @Bind(R.id.searchQuery) TextView mSearchQuery;
 
@@ -36,7 +33,7 @@ public class FindLegalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_legal);
+        setContentView(R.layout.activity_find_legal_list);
         ButterKnife.bind(this);
 
         Intent findLegalActivityIntent = getIntent();
@@ -59,13 +56,13 @@ public class FindLegalActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mLegalOffices = yelpService.processResults(response);
 
-                FindLegalActivity.this.runOnUiThread(new Runnable() {
+                FindLegalListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new LegalListAdapter(getApplicationContext(), mLegalOffices);
 
                         mLegalOfficesRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindLegalActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindLegalListActivity.this);
                         mLegalOfficesRecyclerView.setLayoutManager(layoutManager);
                         mLegalOfficesRecyclerView.setHasFixedSize(true);
                         mLegalOfficesRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), R.drawable.divider_shape));

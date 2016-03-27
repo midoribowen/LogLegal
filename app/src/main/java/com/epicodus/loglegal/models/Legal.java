@@ -1,18 +1,23 @@
 package com.epicodus.loglegal.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Legal {
-    private String mName;
-    private String mPhone;
-    private String mWebsite;
-    private double mRating;
-    private String mImageUrl;
-    private ArrayList<String> mAddress = new ArrayList<>();
-    private ArrayList<String> mShortAddress = new ArrayList<>();
-    private double mLatitude;
-    private double mLongitude;
-    private ArrayList<String> mCategories = new ArrayList<>();
+    String mName;
+    String mPhone;
+    String mWebsite;
+    double mRating;
+    String mImageUrl;
+    ArrayList<String> mAddress = new ArrayList<>();
+    ArrayList<String> mShortAddress = new ArrayList<>();
+    double mLatitude;
+    double mLongitude;
+    ArrayList<String> mCategories = new ArrayList<>();
+
+    public Legal() {}
 
     public Legal(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, ArrayList<String> shortAddress, double latitude, double longitude, ArrayList<String> categories) {
         this.mName = name;

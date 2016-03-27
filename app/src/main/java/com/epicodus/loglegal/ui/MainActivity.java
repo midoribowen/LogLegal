@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(addNewIncidentActivityIntent);
                 break;
             case R.id.findLegalButton:
-                Intent findLegalActivityIntent = new Intent(this, FindLegalActivity.class);
+                Intent findLegalActivityIntent = new Intent(this, FindLegalListActivity.class);
                 startActivity(findLegalActivityIntent);
                 break;
             case R.id.logbookActivityButton:
@@ -135,8 +135,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_legal) {
-            // Navigates to FindLegalActivity
-            Intent intent = new Intent(this, FindLegalActivity.class);
+            // Navigates to FindLegalListActivity
+            Intent intent = new Intent(this, FindLegalListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_logs) {
             // Navigates to LogbookActivity

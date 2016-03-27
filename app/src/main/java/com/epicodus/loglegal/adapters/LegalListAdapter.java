@@ -2,6 +2,7 @@ package com.epicodus.loglegal.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.Legal;
+import com.epicodus.loglegal.ui.FindLegalDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -44,7 +48,7 @@ public class LegalListAdapter extends RecyclerView.Adapter<LegalListAdapter.Lega
         return mLegalOffices.size();
     }
 
-    public class LegalViewHolder extends RecyclerView.ViewHolder {
+    public class LegalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.legalImageView) ImageView mLegalImageView;
         @Bind(R.id.legalNameTextView) TextView mLegalNameTextView;
         @Bind(R.id.legalCategoryTextView) TextView mLegalCategoryTextView;
@@ -57,6 +61,17 @@ public class LegalListAdapter extends RecyclerView.Adapter<LegalListAdapter.Lega
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, FindLegalDetailActivity.class);
+            intent.putExtra("position", itemPosition + "");
+            intent.putExtra("legalOffices", Parcels.wrap(mLegalOffices));
+            mContext.startActivity(intent);
         }
 
         public void bindLegal(Legal legal) {
