@@ -1,6 +1,8 @@
 package com.epicodus.loglegal.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FindLegalDetailFragment extends Fragment {
+public class FindLegalDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.legalImageView) ImageView mLegalImageView;
     @Bind(R.id.legalNameTextView) TextView mLegalNameTextView;
     @Bind(R.id.legalCategoryTextView) TextView mLegalCategoryTextView;
@@ -68,7 +70,34 @@ public class FindLegalDetailFragment extends Fragment {
         mLegalRatingTextView.setText(Double.toString(mLegal.getRating()) + "/5");
         mLegalPhoneTextView.setText(mLegal.getPhone());
         mLegalAddressTextView.setText(android.text.TextUtils.join(", ", mLegal.getAddress()));
+
+        mLegalWebsiteTextView.setOnClickListener(this);
+        mLegalPhoneTextView.setOnClickListener(this);
+        mLegalAddressTextView.setOnClickListener(this);
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.legalWebsiteTextView:
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(mLegal.getWebsite()));
+                startActivity(webIntent);
+                break;
+            case R.id.legalPhoneTextView:
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                        Uri.parse("tel:" + mLegal.getPhone()));
+                startActivity(phoneIntent);
+                break;
+            case R.id.legalAddressTextView:
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("geo:" + mLegal.getLatitude()
+                                + "," + mLegal.getLongitude()
+                                + "?q=" + mLegal.getName()));
+                startActivity(mapIntent);
+                break;
+        }
     }
 
 }
