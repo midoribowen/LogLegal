@@ -1,6 +1,8 @@
 package com.epicodus.loglegal.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Firebase mFirebaseRef;
     private Firebase.AuthResultHandler mAuthResultHandler;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
+
+        initializeProgressDialog();
         initializeAuthResultHandler();
 
         mLoginButton.setOnClickListener(this);
@@ -54,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void loginWithPassword() {
+        mAuthProgressDialog.show();
         String email = mEmailEditText.getText().toString();
         String password = mPasswordEditText.getText().toString();
         mFirebaseRef.authWithPassword(email, password, mAuthResultHandler);
@@ -64,11 +70,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onAuthenticated(AuthData authData) {
                 goToMainActivity();
+                mAuthProgressDialog.hide();
             }
 
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
-                Log.d("Firebase auth error", firebaseError.toString());
+                mAuthProgressDialog.hide();
+                showErrorDialog(firebaseError.toString());
             }
         };
     }
@@ -82,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void registerNewUser() {
+        mAuthProgressDialog.show();
         final String email = mEmailEditText.getText().toString();
         final String password = mPasswordEditText.getText().toString();
 
@@ -93,8 +102,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onError(FirebaseError firebaseError) {
-                Log.d("Registration error", firebaseError.toString());
+                mAuthProgressDialog.show();
+                showErrorDialog(firebaseError.toString());
             }
         });
+    }
+
+    private void showErrorDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    private void initializeProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 }
