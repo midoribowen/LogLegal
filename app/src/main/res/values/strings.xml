@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">LogLegal</string>
+    <string name="firebase_url">https://loglegal.firebaseio.com/</string>
 
     <!-- Strings for Yelp API keys -->
     <string name="consumer_key">OBiodjbCkWje36KRC3RFSA</string>
@@ -22,21 +23,9 @@
     <string name="add_new_incident_button_description">Add a New Incident</string>
 
     <!-- Strings related to login -->
-    <string name="action_settings">Log In</string>
-    <string name="title_activity_login">Sign in</string>
-
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-
+    <string name="action_login">Log In</string>
+    <string name="action_logout">Log Out</string>
+    <string name="login_title">Log In</string>
 
     <!-- Strings related to FindLegalListActivity -->
     <string name="find_legal_title">Find Law Offices</string>
@@ -56,8 +45,5 @@
     <string name="find_legal_search_title">Find a Lawyer by Location</string>
     <string name="find_legal_input_hint">Enter Zip Code</string>
     <string name="find_legal_activity_button_description">Find Law Offices</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

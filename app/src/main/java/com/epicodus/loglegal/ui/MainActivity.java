@@ -14,15 +14,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.firebase.client.Firebase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
     public static final String TAG = MainActivity.class.getSimpleName();
+
+    private Firebase mFirebaseRef;
+
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
     @Bind(R.id.nav_view) NavigationView mNavigationView;
@@ -41,6 +48,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
 
         setSupportActionBar(mToolbar);
 
@@ -110,22 +119,24 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // Navigates to LoginActivity
+    // Navigates to LoginActivity and logs a user out
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_login) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_login:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_logout:
+                this.logout();
+                break;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        mFirebaseRef.unauth();
+        Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
