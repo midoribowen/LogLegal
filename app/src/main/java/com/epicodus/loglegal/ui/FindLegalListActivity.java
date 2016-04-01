@@ -1,10 +1,13 @@
 package com.epicodus.loglegal.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.epicodus.loglegal.adapters.LegalListAdapter;
@@ -23,6 +26,8 @@ import okhttp3.Response;
 
 public class FindLegalListActivity extends AppCompatActivity {
     public static final String TAG = FindLegalListActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
 
     @Bind(R.id.searchQuery) TextView mSearchQuery;
 
@@ -35,6 +40,12 @@ public class FindLegalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_legal_list);
         ButterKnife.bind(this);
+
+        mSharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        mRecentAddress = mSharedPreferences.getString("zipcode", null);
+        if (mRecentAddress != null) {
+            getLegalOffices(mRecentAddress);
+        }
 
         Intent findLegalActivityIntent = getIntent();
         String zipcode = findLegalActivityIntent.getStringExtra("zipcode");

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LogLegal</string>
     <string name="firebase_url">https://loglegal.firebaseio.com/</string>
+    <string name="preference_file_key">com.epicodus.loglegal.PREFERENCE_FILE_KEY</string>
 
     <!-- Strings for Yelp API keys -->
     <string name="consumer_key">OBiodjbCkWje36KRC3RFSA</string>
@@ -23,11 +24,11 @@
     <string name="add_new_incident_button_description">Add a New Incident</string>
 
     <!-- Strings related to login -->
-    <string name="action_login">Log In</string>
     <string name="action_logout">Log Out</string>
     <string name="login_title">Log In</string>
 
     <!-- Strings related to FindLegalListActivity -->
+    <string name="action_search">Find Law Offices</string>
     <string name="find_legal_title">Find Law Offices</string>
     <string name="find_legal_map_description">A GoogleMap of all law offices found</string>
     <string name="query_term">legal services</string>

@@ -1,6 +1,8 @@
 package com.epicodus.loglegal.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +18,11 @@ import butterknife.ButterKnife;
 
 public class LogbookActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LogbookActivity.class.getSimpleName();
+
     @Bind(R.id.incident) TextView mIncident;
 
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     @Bind(R.id.zipcodeInput) EditText mZipcodeInput;
     @Bind(R.id.findLegalButton) Button mFindLegalButton;
 
@@ -40,6 +45,9 @@ public class LogbookActivity extends AppCompatActivity implements View.OnClickLi
         incidentString = String.format(incidentRes.getString(R.string.incident), date, time, witnesses, description, policeBadge);
         mIncident.setText(incidentString);
 
+        mSharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        mEditor = mSharedPreferences.edit();
+
         mFindLegalButton.setOnClickListener(this);
     }
 
@@ -49,10 +57,17 @@ public class LogbookActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.findLegalButton:
                 String zipcode = mZipcodeInput.getText().toString();
 
+                if(!(zipcode).equals("")) {
+                    addToSharedPreferences(zipcode);
+                }
                 Intent findLegalActivityIntent = new Intent(this, FindLegalListActivity.class);
                 findLegalActivityIntent.putExtra("zipcode", zipcode);
                 startActivity(findLegalActivityIntent);
                 break;
         }
+    }
+
+    private void addToSharedPreferences(String zipcode) {
+        mEditor.putString("zipcode", zipcode).commit();
     }
 }
