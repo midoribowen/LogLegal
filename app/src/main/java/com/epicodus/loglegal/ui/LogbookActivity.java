@@ -6,25 +6,27 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LogbookActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LogbookActivity.class.getSimpleName();
+    private Firebase mFirebaseRef;
 
     @Bind(R.id.incident) TextView mIncident;
-
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
-    @Bind(R.id.zipcodeInput) EditText mZipcodeInput;
-    @Bind(R.id.findLegalButton) Button mFindLegalButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,29 +47,38 @@ public class LogbookActivity extends AppCompatActivity implements View.OnClickLi
         incidentString = String.format(incidentRes.getString(R.string.incident), date, time, witnesses, description, policeBadge);
         mIncident.setText(incidentString);
 
-        mSharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        mEditor = mSharedPreferences.edit();
-
-        mFindLegalButton.setOnClickListener(this);
+        mFirebaseRef = LogLegalApplication.getAppInstance().getAppInstance().getFirebaseRef();
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.findLegalButton:
-                String zipcode = mZipcodeInput.getText().toString();
 
-                if(!(zipcode).equals("")) {
-                    addToSharedPreferences(zipcode);
-                }
-                Intent findLegalActivityIntent = new Intent(this, FindLegalListActivity.class);
-                findLegalActivityIntent.putExtra("zipcode", zipcode);
-                startActivity(findLegalActivityIntent);
-                break;
-        }
     }
 
-    private void addToSharedPreferences(String zipcode) {
-        mEditor.putString("zipcode", zipcode).commit();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                this.logout();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        mFirebaseRef.unauth();
+        goToLoginActivity();
+    }
+
+    private void goToLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

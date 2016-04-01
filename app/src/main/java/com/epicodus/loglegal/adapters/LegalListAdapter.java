@@ -75,6 +75,7 @@ public class LegalListAdapter extends RecyclerView.Adapter<LegalListAdapter.Lega
         }
 
         public void bindLegal(Legal legal) {
+            //TO DO: Handle Legal Offices with no imageurl - There are some offices with 'no value' listed under image_url
             Picasso.with(mContext).load(legal.getImageUrl()).fit().centerCrop().into(mLegalImageView);
             if (legal.getName().length() > 31) {
                 mLegalNameTextView.setText(legal.getName().substring(0, 31) + "...");

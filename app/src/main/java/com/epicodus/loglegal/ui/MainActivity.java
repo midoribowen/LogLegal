@@ -3,6 +3,9 @@ package com.epicodus.loglegal.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -105,10 +108,6 @@ public class MainActivity extends AppCompatActivity
                 addNewIncidentActivityIntent.putExtra("policeBadge", policeBadge);
                 startActivity(addNewIncidentActivityIntent);
                 break;
-            case R.id.findLegalButton:
-                Intent findLegalActivityIntent = new Intent(this, FindLegalListActivity.class);
-                startActivity(findLegalActivityIntent);
-                break;
             case R.id.logbookActivityButton:
                 Intent logbookActivityIntent = new Intent(this, LogbookActivity.class);
                 startActivity(logbookActivityIntent);
@@ -128,19 +127,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         return true;
     }
 
-    // Navigates to LoginActivity and logs a user out
+    // Logs a user out and navigates to LoginActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_login:
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-                break;
             case R.id.action_logout:
                 this.logout();
                 break;
