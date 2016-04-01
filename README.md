@@ -1,17 +1,49 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Sunday March 27th, 2016
+#### A legal logbook for users to track incidents, Friday April 1st, 2016
 
 #### By Midori Bowen
 
 ## Description
 
-Log Legal is a logbook where users can enter and track incidents. Each incident has a date, a time, witnesses, description, and a police badge number (optional). This application is an independent project for the March 2016 Android class at Epicodus. It is a project that builds each week and therefore demonstrates the week's lessons at the end of each week.
+Log Legal is a logbook where users can enter and track incidents. Each incident has a date, a time, witnesses, description, and a police badge number (optional).
+
 A User can:
 * add an incident to their logbook, which they can view and sort
-* change their settings (username, password)
-* view law offices and advocacy organizations near them on a map with a list of places below
-* click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's Google Maps app
+* register with an email and password, log in, and log out.
+* search for law offices by zipcode and view them on a map with a list of office below
+* view details about each law office by 'clicking' on a list item
+* in the the detail view, click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's Google Maps app
+
+---------------
+
+LogLegal is an independent project for the March 2016 Android class at Epicodus. It is a project that builds each week and therefore demonstrates proficiency in each week's lessons.
+
+Code reviews currently included:
+* __Data Persistence (Week 3)__
+  * Implement Firebase user authentication
+  * Save and retrieve data using Firebase, with data structured properly (i.e. flat not nested)
+  * Employ the Firebase-RecyclerAdapter to display from the database
+  * Use SharedPreferences to save an important piece of data
+  * Utilize dialogs to inform users of errors, login status, etc.
+  * Use a SearchView widget to gather user input
+
+
+* __Web Service Backends and Fragments (Week 2)__
+  * Implement OkHttp to retrieve data from a backend
+  * Create a data model to store the data
+  * Display a list of information using a RecyclerView
+  * Use fragments and a pager adapter to swipe through views
+  * Incorporate at least one implicit intent
+
+
+* __User Interface Basics (Week 1)__
+  * At least 3 Activities the user can navigate to
+  * Display a list of information
+  * Gather user input and pass it to another activity
+  * Use Butterknife to bind all views
+  * Use View.OnClickListener interface to set click listeners
+
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
