@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 
 import butterknife.Bind;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
+        checkForAuthenticatedUser();
 
         setSupportActionBar(mToolbar);
 
@@ -68,6 +70,19 @@ public class MainActivity extends AppCompatActivity
         mNavigationView.setNavigationItemSelectedListener(this);
 
     } // END onCreate
+
+    // Check for Authenticated User - if not logged in, send to LoginActivity
+    private void checkForAuthenticatedUser() {
+        AuthData authData = mFirebaseRef.getAuth();
+        if (authData == null) {
+            goToLoginActivity();
+        }
+    }
+
+    private void goToLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
 
     // Handles button clicks for adding a new incident, navigating to findLegalActivity, and navigating to LogbookActivity
@@ -111,7 +126,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -136,7 +150,8 @@ public class MainActivity extends AppCompatActivity
 
     private void logout() {
         mFirebaseRef.unauth();
-        Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Logging Out...", Toast.LENGTH_SHORT).show();
+        goToLoginActivity();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
