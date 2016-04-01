@@ -39,9 +39,6 @@
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/login_title">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity"/>
         </activity>
     </application>
 
