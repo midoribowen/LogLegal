@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     private Query mQuery;
     private Firebase mFirebaseRef;
+    private String mCurrentUserId;
     private FirebaseLogFileListAdapter mAdapter;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
@@ -53,11 +54,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
 
+        mCurrentUserId = mFirebaseRef.getAuth().getUid();
         setUpFirebaseQuery();
         setUpRecyclerView();
+
 
         setSupportActionBar(mToolbar);
 
@@ -91,7 +95,7 @@ public class MainActivity extends AppCompatActivity
     // Displays list of logfiles in recyclerview
     private void setUpFirebaseQuery() {
         Firebase.setAndroidContext(this);
-        String location = mFirebaseRef.child("logfiles").toString();
+        String location = mFirebaseRef.child("logfiles/" + mCurrentUserId).toString();
         mQuery = new Firebase(location);
     }
 

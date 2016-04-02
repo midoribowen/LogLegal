@@ -21,6 +21,8 @@ import butterknife.ButterKnife;
 public class AddLogFileFragment extends DialogFragment implements View.OnClickListener {
     private Firebase mFirebaseRef;
     private String logFileId;
+    private String mCurrentUserId;
+    private LogFile mLogFile;
 
     @Bind(R.id.nameEditText) EditText mNameEditText;
     @Bind(R.id.addLogFileButton) Button mAddLogFileButton;
@@ -34,13 +36,18 @@ public class AddLogFileFragment extends DialogFragment implements View.OnClickLi
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
+        mCurrentUserId = mFirebaseRef.getAuth().getUid();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_add_log_file, container, false);
         ButterKnife.bind(this, view);
-
-        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef().child("logfiles/").push();
 
         mAddLogFileButton.setOnClickListener(this);
 
@@ -57,6 +64,7 @@ public class AddLogFileFragment extends DialogFragment implements View.OnClickLi
     }
 
     private void createLogFile(String name) {
+        mFirebaseRef = mFirebaseRef.child("logfiles/" + mCurrentUserId + "/").push();
         LogFile logFile = new LogFile(name, mFirebaseRef.getKey().toString());
         mFirebaseRef.setValue(logFile);
     }
