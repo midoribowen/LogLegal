@@ -40,7 +40,7 @@ public class AddLogFileFragment extends DialogFragment implements View.OnClickLi
         View view = inflater.inflate(R.layout.fragment_add_log_file, container, false);
         ButterKnife.bind(this, view);
 
-        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef().child("logfile/").push();
+        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef().child("logfiles/").push();
 
         mAddLogFileButton.setOnClickListener(this);
 

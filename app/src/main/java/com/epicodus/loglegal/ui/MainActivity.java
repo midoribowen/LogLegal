@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.epicodus.loglegal.adapters.FirebaseLogFileListAdapter;
+import com.epicodus.loglegal.models.LogFile;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
@@ -35,13 +38,13 @@ public class MainActivity extends AppCompatActivity
 
     private Query mQuery;
     private Firebase mFirebaseRef;
-//    private FirebaseLogFileAdapter mAdapter;
+    private FirebaseLogFileListAdapter mAdapter;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
     @Bind(R.id.nav_view) NavigationView mNavigationView;
 
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.addNewLogFileButton) FloatingActionButton mAddNewLogFileButton;
 
     @Override
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
+
+        setUpFirebaseQuery();
+        setUpRecyclerView();
 
         setSupportActionBar(mToolbar);
 
@@ -80,6 +86,19 @@ public class MainActivity extends AppCompatActivity
     private void goToLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    // Displays list of logfiles in recyclerview
+    private void setUpFirebaseQuery() {
+        Firebase.setAndroidContext(this);
+        String location = mFirebaseRef.child("logfiles").toString();
+        mQuery = new Firebase(location);
+    }
+
+    private void setUpRecyclerView() {
+        mAdapter = new FirebaseLogFileListAdapter(mQuery, LogFile.class);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
