@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, FindLegalListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_logs) {
-            // Navigates to LogfileActivity
-            Intent intent = new Intent(this, LogfileActivity.class);
+            // Navigates to MainActivity
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_camera) {
             // Navigates to CameraActivity

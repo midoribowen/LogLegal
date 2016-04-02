@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="5dp">
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:showDividers="end"
+    android:divider="@drawable/divider_drawable"
+    android:background="@color/background_material_light">
 
 
     <TextView
