@@ -1,6 +1,6 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Friday April 1st, 2016
+#### A legal logbook for users to track incidents, Saturday April 2nd, 2016
 
 #### By Midori Bowen
 
@@ -9,11 +9,16 @@
 Log Legal is a logbook where users can enter and track incidents. Each incident has a date, a time, witnesses, description, and a police badge number (optional).
 
 A User can:
-* add an incident to their logbook, which they can view and sort
 * register with an email and password, log in, and log out.
-* search for law offices by zipcode and view them on a map with a list of office below
+* manage their logbook:
+  * view all the log files in their logbook
+  * add a new log file, with a name
+  * add an incident to a log file, which they can view and sort
+
+
+* search for law offices by zipcode and view them on a map with a list of law offices below
 * view details about each law office by 'clicking' on a list item
-* in the the detail view, click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's Google Maps app
+* in the the detail view, click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's maps app
 
 ---------------
 
