@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.LogbookActivity"
+            android:name=".ui.LogfileActivity"
             android:label="@string/logbook_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

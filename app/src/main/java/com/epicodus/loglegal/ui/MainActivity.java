@@ -3,8 +3,8 @@ package com.epicodus.loglegal.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,6 +23,7 @@ import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
+import com.firebase.client.Query;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,20 +33,16 @@ public class MainActivity extends AppCompatActivity
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
+    private Query mQuery;
     private Firebase mFirebaseRef;
+//    private FirebaseLogFileAdapter mAdapter;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
     @Bind(R.id.nav_view) NavigationView mNavigationView;
 
-    @Bind(R.id.dateInput) EditText mDateInput;
-    @Bind(R.id.timeInput) EditText mTimeInput;
-    @Bind(R.id.witnessesInput) EditText mWitnessesInput;
-    @Bind(R.id.descriptionInput) EditText mDescriptionInput;
-    @Bind(R.id.policeBadgeInput) EditText mPoliceBadgeInput;
-    @Bind(R.id.addNewIncidentButton) Button mAddNewIncidentButton;
-
-    @Bind(R.id.logbookActivityButton) FloatingActionButton mLogbookActivityButton;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.addNewLogFileButton) FloatingActionButton mAddNewLogFileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +57,7 @@ public class MainActivity extends AppCompatActivity
 
         // Click listeners
             //For Buttons
-        mAddNewIncidentButton.setOnClickListener(this);
-
-        mLogbookActivityButton.setOnClickListener(this);
+        mAddNewLogFileButton.setOnClickListener(this);
 
             // For Drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -88,31 +83,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    // Handles button clicks for adding a new incident, navigating to findLegalActivity, and navigating to LogbookActivity
+    // Handles button clicks for adding a new incident, navigating to findLegalActivity, and navigating to LogfileActivity
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.addNewIncidentButton:
-                String date = mDateInput.getText().toString();
-                String time = mTimeInput.getText().toString();
-                String witnesses = mWitnessesInput.getText().toString();
-                String description = mDescriptionInput.getText().toString();
-                String policeBadge = mPoliceBadgeInput.getText().toString();
-
-                Intent addNewIncidentActivityIntent = new Intent(this, LogbookActivity.class);
-
-                addNewIncidentActivityIntent.putExtra("date", date);
-                addNewIncidentActivityIntent.putExtra("time", time);
-                addNewIncidentActivityIntent.putExtra("witnesses", witnesses);
-                addNewIncidentActivityIntent.putExtra("description", description);
-                addNewIncidentActivityIntent.putExtra("policeBadge", policeBadge);
-                startActivity(addNewIncidentActivityIntent);
-                break;
-            case R.id.logbookActivityButton:
-                Intent logbookActivityIntent = new Intent(this, LogbookActivity.class);
-                startActivity(logbookActivityIntent);
+            case R.id.addNewLogFileButton:
+                launchAddLogFileFragment();
                 break;
         }
+    }
+
+    private void launchAddLogFileFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        AddLogFileFragment addLogFile = AddLogFileFragment.newInstance();
+        addLogFile.show(fm, "fragment_add_log_file");
     }
 
     @Override
@@ -160,8 +144,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, FindLegalListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_logs) {
-            // Navigates to LogbookActivity
-            Intent intent = new Intent(this, LogbookActivity.class);
+            // Navigates to LogfileActivity
+            Intent intent = new Intent(this, LogfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_camera) {
             // Navigates to CameraActivity

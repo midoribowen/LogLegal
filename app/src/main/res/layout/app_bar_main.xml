@@ -24,12 +24,12 @@
     <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/logbookActivityButton"
+        android:id="@+id/addNewLogFileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/logs_white"
+        android:src="@drawable/add_white"
         android:contentDescription="@string/logbook_activity_button_description" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,8 +1,6 @@
 package com.epicodus.loglegal.ui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,20 +8,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
-import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LogbookActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TAG = LogbookActivity.class.getSimpleName();
+public class LogfileActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = LogfileActivity.class.getSimpleName();
     private Firebase mFirebaseRef;
 
     @Bind(R.id.incident) TextView mIncident;
@@ -31,7 +26,7 @@ public class LogbookActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logbook);
+        setContentView(R.layout.activity_logfile);
         ButterKnife.bind(this);
 
         Intent addNewIncidentActivityIntent = getIntent();
