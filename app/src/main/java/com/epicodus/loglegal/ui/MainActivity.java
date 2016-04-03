@@ -52,16 +52,12 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.logbook_title);
         ButterKnife.bind(this);
 
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
-
-        mCurrentUserId = mFirebaseRef.getAuth().getUid();
-        setUpFirebaseQuery();
-        setUpRecyclerView();
-
 
         setSupportActionBar(mToolbar);
 
@@ -84,6 +80,10 @@ public class MainActivity extends AppCompatActivity
         AuthData authData = mFirebaseRef.getAuth();
         if (authData == null) {
             goToLoginActivity();
+        } else {
+            mCurrentUserId = mFirebaseRef.getAuth().getUid();
+            setUpFirebaseQuery();
+            setUpRecyclerView();
         }
     }
 
