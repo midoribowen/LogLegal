@@ -3,7 +3,10 @@ package com.epicodus.loglegal.ui;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,7 +15,10 @@ import android.widget.TextView;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.epicodus.loglegal.models.LogFile;
 import com.firebase.client.Firebase;
+
+import org.parceler.Parcels;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,8 +26,10 @@ import butterknife.ButterKnife;
 public class LogfileActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LogfileActivity.class.getSimpleName();
     private Firebase mFirebaseRef;
+    private LogFile mLogfile;
 
-    @Bind(R.id.incident) TextView mIncident;
+    @Bind(R.id.incidentRecyclerView) RecyclerView mIncidentRecyclerView;
+    @Bind(R.id.addNewIncidentButton) FloatingActionButton mAddNewIncidentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +37,30 @@ public class LogfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_logfile);
         ButterKnife.bind(this);
 
-        Intent addNewIncidentActivityIntent = getIntent();
-        String date = addNewIncidentActivityIntent.getStringExtra("date");
-        String time = addNewIncidentActivityIntent.getStringExtra("time");
-        String witnesses = addNewIncidentActivityIntent.getStringExtra("witnesses");
-        String description = addNewIncidentActivityIntent.getStringExtra("description");
-        String policeBadge = addNewIncidentActivityIntent.getStringExtra("policeBadge");
-
-        Resources incidentRes = getResources();
-        String incidentString;
-
-        incidentString = String.format(incidentRes.getString(R.string.incident), date, time, witnesses, description, policeBadge);
-        mIncident.setText(incidentString);
-
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        mLogfile = Parcels.unwrap(bundle.getParcelable("chosenLogfile"));
         mFirebaseRef = LogLegalApplication.getAppInstance().getAppInstance().getFirebaseRef();
+
+        mAddNewIncidentButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.addNewIncidentButton:
+                launchAddIncidentFragment();
+                break;
+        }
+    }
 
+    private void launchAddIncidentFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        AddIncidentFragment addIncident = AddIncidentFragment.newInstance();
+        Bundle bundle = new Bundle();
+        bundle.putString("logFileId", mLogfile.getLogFileId());
+        addIncident.setArguments(bundle);
+        addIncident.show(fm, "fragment_add_incident");
     }
 
     @Override

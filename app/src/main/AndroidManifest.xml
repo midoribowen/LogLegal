@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.LogfileActivity">
+            android:name=".ui.LogfileActivity"
+            android:label="@string/logfile_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />

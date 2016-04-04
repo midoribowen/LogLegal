@@ -10,18 +10,12 @@
     <string name="token_secret">J7nbh34hhbw1rHKZi-qZuY4gnmY</string>
 
     <!-- Strings related to MainActivity -->
+    <string name="main_activity_title">Logbook</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="logbook_activity_button_description">View Logbook</string>
 
-    <string name="add_new_incident_title">Add A New Incident</string>
-    <string name="date_label">Date: </string>
-    <string name="time_label">Time: </string>
-    <string name="witnesses_label">Witnesses: </string>
-    <string name="description_label">Description: </string>
-    <string name="police_badge_label">Police Badge #: </string>
-    <string name="add_new_incident_button_description">Add a New Incident</string>
 
     <!-- Strings related to login -->
     <string name="action_logout">Log Out</string>
@@ -33,21 +27,19 @@
     <string name="find_legal_map_description">A GoogleMap of all law offices found</string>
     <string name="query_term">legal services</string>
 
-    <!-- Strings related to LogfileActivity -->
-    <string name="logbook_title">Logbook</string>
-    <string name="incident">
-        <!-- date, time, witnesses, description, police badge # -->
-        Date: %1$s  -  Time: %2$s\n
-        Witnesses: %3$s\n
-        Description: %4$s\n
-        Police Badge #: %5$s\n
-    </string>
-
     <string name="find_legal_search_title">Find a Lawyer by Location</string>
     <string name="find_legal_input_hint">Enter Zip Code</string>
     <string name="find_legal_activity_button_description">Find Law Offices</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to LogfileActivity -->
+    <string name="logfile_title">Incidents</string>
+
+    <string name="add_new_incident_title">Add A New Incident</string>
+    <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="witnesses_label">Witnesses</string>
+    <string name="description_label">Description</string>
+    <string name="police_badge_label">Police Badge Number</string>
+    <string name="add_new_incident_button_description">Add New Incident</string>
 
 </resources>
