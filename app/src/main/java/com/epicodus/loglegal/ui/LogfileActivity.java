@@ -76,7 +76,7 @@ public class LogfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private void setUpFirebaseQuery() {
         String location = mFirebaseRef.child("incidents/" + mLogfile.getLogFileId()).toString();
-        mQuery = new Firebase(location);
+        mQuery = new Firebase(location).orderByChild("negativeTimeStamp");
     }
 
     private void setUpRecyclerView() {
