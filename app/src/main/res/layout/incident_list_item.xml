@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:showDividers="end"
+    android:divider="@drawable/divider_drawable"
+    android:background="@color/colorIcons">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Incident Date"
+        android:id="@+id/incidentDateTextView"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Incident Time"
+        android:id="@+id/incidentTimeTextView"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="15sp"
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Witnesses:"
+        android:id="@+id/witnessesLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Witnesses"
+        android:id="@+id/witnessesTextView"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:id="@+id/descriptionLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:id="@+id/descriptionTextView"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Police Badge #:"
+        android:id="@+id/policeBadgeLabel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Police Badge Number"
+        android:id="@+id/policeBadgeNumberTextView"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginLeft="20dp" />
+
+</LinearLayout>

@@ -6,7 +6,7 @@
     android:paddingTop="5dp"
     android:showDividers="end"
     android:divider="@drawable/divider_drawable"
-    android:background="@color/background_material_light">
+    android:background="@color/colorIcons">
 
 
     <TextView

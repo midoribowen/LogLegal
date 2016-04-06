@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,8 +16,11 @@ import android.widget.TextView;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
+import com.epicodus.loglegal.adapters.FirebaseIncidentListAdapter;
+import com.epicodus.loglegal.models.Incident;
 import com.epicodus.loglegal.models.LogFile;
 import com.firebase.client.Firebase;
+import com.firebase.client.Query;
 
 import org.parceler.Parcels;
 
@@ -25,7 +29,9 @@ import butterknife.ButterKnife;
 
 public class LogfileActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = LogfileActivity.class.getSimpleName();
+    private Query mQuery;
     private Firebase mFirebaseRef;
+    private FirebaseIncidentListAdapter mAdapter;
     private LogFile mLogfile;
 
     @Bind(R.id.incidentRecyclerView) RecyclerView mIncidentRecyclerView;
@@ -40,7 +46,12 @@ public class LogfileActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         mLogfile = Parcels.unwrap(bundle.getParcelable("chosenLogfile"));
-        mFirebaseRef = LogLegalApplication.getAppInstance().getAppInstance().getFirebaseRef();
+
+        Firebase.setAndroidContext(this);
+        mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
+
+        setUpFirebaseQuery();
+        setUpRecyclerView();
 
         mAddNewIncidentButton.setOnClickListener(this);
     }
@@ -61,6 +72,17 @@ public class LogfileActivity extends AppCompatActivity implements View.OnClickLi
         bundle.putString("logFileId", mLogfile.getLogFileId());
         addIncident.setArguments(bundle);
         addIncident.show(fm, "fragment_add_incident");
+    }
+
+    private void setUpFirebaseQuery() {
+        String location = mFirebaseRef.child("incidents/" + mLogfile.getLogFileId()).toString();
+        mQuery = new Firebase(location);
+    }
+
+    private void setUpRecyclerView() {
+        mAdapter = new FirebaseIncidentListAdapter(mQuery, Incident.class);
+        mIncidentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mIncidentRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
