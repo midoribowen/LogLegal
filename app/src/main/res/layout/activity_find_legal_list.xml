@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.FindLegalListActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You Searched: 60640"
-        android:id="@+id/searchQuery"
-        android:textColor="@color/colorPrimaryText"
-        android:layout_marginTop="5dp" />
-
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

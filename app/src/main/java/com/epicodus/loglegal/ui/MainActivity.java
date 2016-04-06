@@ -1,6 +1,7 @@
 package com.epicodus.loglegal.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +28,7 @@ import com.epicodus.loglegal.models.LogFile;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
+import com.firebase.client.core.Context;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

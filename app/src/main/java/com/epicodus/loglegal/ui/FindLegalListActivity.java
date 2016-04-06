@@ -35,9 +35,8 @@ public class FindLegalListActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
-    private Firebase mFirebaseRef;
 
-    @Bind(R.id.searchQuery) TextView mSearchQuery;
+    private Firebase mFirebaseRef;
 
     @Bind(R.id.legalOfficesRecyclerView) RecyclerView mLegalOfficesRecyclerView;
     private LegalListAdapter mAdapter;
@@ -55,12 +54,6 @@ public class FindLegalListActivity extends AppCompatActivity {
         if (mRecentAddress != null) {
             getLegalOffices(mRecentAddress);
         }
-
-        Intent findLegalActivityIntent = getIntent();
-        String zipcode = findLegalActivityIntent.getStringExtra("zipcode");
-        mSearchQuery.setText("You Searched: " + zipcode);
-
-        getLegalOffices(zipcode);
     }
 
     @Override
