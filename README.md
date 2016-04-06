@@ -1,6 +1,6 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Saturday April 2nd, 2016
+#### A legal logbook for users to track incidents, Tuesday April 5th, 2016
 
 #### By Midori Bowen
 
@@ -13,7 +13,7 @@ A User can:
 * manage their logbook:
   * view all the log files in their logbook
   * add a new log file, with a name
-  * add an incident to a log file, which they can view and sort
+  * add an incident to a log file, which are sorted by the time they were added to the log file.
 
 
 * search for law offices by zipcode and view them on a map with a list of law offices below
@@ -84,19 +84,7 @@ You will need the following programs installed on your computer.
 
 ## Known Bugs
 
-* If you select Log In in the overflow menu and go to LoginActivity, this does not do anything. Real Log in with authentication is not enabled yet. This is just a preview of this feature.
-
-###### HAXM Errors
-
-If you receive an error about HAX or HAXM, you may not have HAXM installed or HAXM may be installed improperly.
-
-Open Android Studio > Preferences and navigate to the SDK Manager through the Preferences menu (Appearance & Behavior > System Settings > Android SDK).
-
- Then click the link for 'Launch Standalone SDK Manager'. Scroll to the last item in this list to 'Intel X86 Emulator Accelerator (HAXM installer)'. If this says 'Installed', the problem is probably this: [How to Fix: "HAX is not working and emulator runs in emulation mode"](http://stackoverflow.com/questions/21031903/how-to-fix-hax-is-not-working-and-emulator-runs-in-emulation-mode).
-
- Select the checkbox next to this package and click 'Delete 1 package'. After it is deleted, try to reinstall with 1536MB of RAM allowed by HAXM, by following the instructions in the link below.
-
- If it is not installed, follow the instructions here: [Installation Instructions for Intel® Hardware Accelerated Execution Manager - Mac OS X*](https://software.intel.com/en-us/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-mac-os-x). Make sure to allow at least 1536MB of RAM.
+None currently!
 
 ## Support and contact details
 
@@ -104,7 +92,7 @@ Contact through GitHub username: midoribowen
 
 ## Technologies Used
 
-AndroidStudio, AndroidSDK, Java v1.8, Gradle
+AndroidStudio, Firebase, AndroidSDK, Java v1.8, Gradle
 
 ### License
 Copyright (c) 2016 Midori Bowen
