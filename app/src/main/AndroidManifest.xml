@@ -34,7 +34,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.FindLegalDetailActivity" />
+        <activity
+            android:name=".ui.FindLegalDetailActivity"
+            android:label="">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.FindLegalListActivity"/>
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/login_title">

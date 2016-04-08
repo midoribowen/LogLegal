@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.FindLegalListActivity">
@@ -11,27 +10,13 @@
         android:layout_height="match_parent"
         android:id="@+id/scrollView2" >
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <fragment
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragmentFindLegalList"
+            android:name="com.epicodus.loglegal.ui.FindLegalListFragment"
+            tools:layout="@layout/fragment_find_legal_list"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/map"
-                android:src="@drawable/map"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/find_legal_map_description" />
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/legalOfficesRecyclerView" />
-
-        </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

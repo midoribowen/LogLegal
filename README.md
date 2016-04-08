@@ -1,6 +1,6 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Tuesday April 5th, 2016
+#### A legal logbook for users to track incidents, Friday April 8th, 2016
 
 #### By Midori Bowen
 
@@ -25,6 +25,12 @@ A User can:
 LogLegal is an independent project for the March 2016 Android class at Epicodus. It is a project that builds each week and therefore demonstrates proficiency in each week's lessons.
 
 Code reviews currently included:
+* __Gestures, Animations, & Flexible UIs (Week 4)__
+  * Includes at least one gesture listener
+  * Uses animations
+  * Implements at least one alternate resource
+
+
 * __Data Persistence (Week 3)__
   * Implement Firebase user authentication
   * Save and retrieve data using Firebase, with data structured properly (i.e. flat not nested)
@@ -49,6 +55,19 @@ Code reviews currently included:
   * Use Butterknife to bind all views
   * Use View.OnClickListener interface to set click listeners
 
+
+## To Do
+
+* allow users to double tap on a log file to display the most recent incident entry
+* delete entries and log files with confirmation
+* sort the entries by date via date-formatting
+* Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location
+* material design to 'pretty up' the app
+  * Watch udacity course https://www.udacity.com/course/material-design-for-android-developers--ud862
+
+* Includes at least one gesture listener
+* Uses animations
+* Implements at least one alternate resource
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
