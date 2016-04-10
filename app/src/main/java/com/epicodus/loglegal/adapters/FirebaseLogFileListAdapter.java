@@ -37,7 +37,7 @@ public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileV
     @Override
     public void onBindViewHolder(final LogFileViewHolder holder, int position) {
         holder.bindLogFile(getItem(position));
-        holder.mLogFileNameTextView.setOnTouchListener(new View.OnTouchListener() {
+        holder.mDragIcon.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
