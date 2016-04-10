@@ -6,12 +6,15 @@ import org.parceler.Parcel;
 public class LogFile {
     String name;
     String logFileId;
+    private String index;
 
     public LogFile() {}
 
     public LogFile(String name, String logFileId) {
         this.name = name;
         this.logFileId = logFileId;
+
+        this.index = "not_specified";
     }
 
     public String getName() {
@@ -20,5 +23,13 @@ public class LogFile {
 
     public String getLogFileId() {
         return logFileId;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

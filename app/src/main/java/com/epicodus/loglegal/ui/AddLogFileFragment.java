@@ -65,7 +65,7 @@ public class AddLogFileFragment extends DialogFragment implements View.OnClickLi
 
     private void createLogFile(String name) {
         mFirebaseRef = mFirebaseRef.child("logfiles/" + mCurrentUserId + "/").push();
-        LogFile logFile = new LogFile(name, mFirebaseRef.getKey().toString());
+        LogFile logFile = new LogFile(name, mFirebaseRef.getKey());
         mFirebaseRef.setValue(logFile);
     }
 }

@@ -102,7 +102,18 @@ public class MainActivity extends AppCompatActivity
     private void setUpFirebaseQuery() {
         Firebase.setAndroidContext(this);
         String location = mFirebaseRef.child("logfiles/" + mCurrentUserId).toString();
-        mQuery = new Firebase(location);
+        mQuery = new Firebase(location).orderByChild("index");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        for (LogFile logFile : mAdapter.getItems()) {
+            logFile.setIndex(Integer.toString(mAdapter.getItems().indexOf(logFile)));
+            mFirebaseRef.child("logfiles/" + mCurrentUserId + "/"
+                    + logFile.getLogFileId())
+                    .setValue(logFile);
+        }
     }
 
     private void setUpRecyclerView() {

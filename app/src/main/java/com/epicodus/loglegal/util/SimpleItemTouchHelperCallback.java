@@ -24,14 +24,11 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        // Maybe don't need? Check after implementation
         final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-
         final int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
         return makeMovementFlags(dragFlags, swipeFlags);
     }
 
-    // Maybe don't need? Check after implementation
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder source, RecyclerView.ViewHolder target) {
         if (source.getItemViewType() != target.getItemViewType()) {

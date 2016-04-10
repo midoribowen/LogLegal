@@ -50,7 +50,9 @@ public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileV
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        return false;
+        Collections.swap(getItems(), fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+        return true;
     }
 
     @Override
