@@ -1,19 +1,30 @@
 package com.epicodus.loglegal.adapters;
 
 
+import android.support.v4.view.MotionEventCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.LogFile;
 import com.epicodus.loglegal.util.FirebaseRecyclerAdapter;
+import com.epicodus.loglegal.util.ItemTouchHelperAdapter;
+import com.epicodus.loglegal.util.OnStartDragListener;
+import com.firebase.client.Firebase;
 import com.firebase.client.Query;
 
-public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileViewHolder, LogFile> {
+import java.util.Collections;
 
-    public FirebaseLogFileListAdapter(Query query, Class<LogFile> itemClass) {
+public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileViewHolder, LogFile> implements ItemTouchHelperAdapter {
+
+    private final OnStartDragListener mDragStartListener;
+
+    public FirebaseLogFileListAdapter(Query query, Class<LogFile> itemClass, OnStartDragListener dragStartListener) {
         super(query, itemClass);
+        mDragStartListener = dragStartListener;
     }
 
     @Override
@@ -24,8 +35,33 @@ public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileV
     }
 
     @Override
-    public void onBindViewHolder(LogFileViewHolder holder, int position) {
+    public void onBindViewHolder(final LogFileViewHolder holder, int position) {
         holder.bindLogFile(getItem(position));
+        holder.mLogFileNameTextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
+                    mDragStartListener.onStartDrag(holder);
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public boolean onItemMove(int fromPosition, int toPosition) {
+        return false;
+    }
+
+    @Override
+    public void onItemDismiss(int position) {
+        Firebase ref = LogLegalApplication.getAppInstance().getFirebaseRef();
+        ref.child("logfiles/" + ref.getAuth().getUid() + "/" + getItem(position).getLogFileId()).removeValue();
+    }
+
+    @Override
+    public int getItemCount() {
+        return getItems().size();
     }
 
     @Override

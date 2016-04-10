@@ -10,6 +10,7 @@ import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.LogFile;
 import com.epicodus.loglegal.ui.LogfileActivity;
+import com.epicodus.loglegal.util.ItemTouchHelperViewHolder;
 import com.firebase.client.Firebase;
 
 import org.parceler.Parcels;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LogFileViewHolder extends RecyclerView.ViewHolder {
+public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder {
     @Bind(R.id.logFileNameTextView) TextView mLogFileNameTextView;
     private Context mContext;
     private ArrayList<LogFile> mLogFiles = new ArrayList<>();
@@ -33,17 +34,29 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder {
         mLogFiles = logFiles;
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, LogfileActivity.class);
-                intent.putExtra("chosenLogfile", Parcels.wrap(mLogFiles.get(getLayoutPosition())));
-                mContext.startActivity(intent);
-            }
-        });
+        itemView.setOnClickListener(this);
     }
 
     public void bindLogFile(LogFile logFile) {
         mLogFileNameTextView.setText(logFile.getName());
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v == itemView) {
+            Intent intent = new Intent(mContext, LogfileActivity.class);
+            intent.putExtra("chosenLogfile", Parcels.wrap(mLogFiles.get(getLayoutPosition())));
+            mContext.startActivity(intent);
+        }
+    }
+    @Override
+    public void onItemSelected() {
+        // add animation
+    }
+
+    @Override
+    public void onItemClear() {
+        // add animation
+    }
+
 }

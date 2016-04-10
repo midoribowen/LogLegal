@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -25,6 +26,8 @@ import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.adapters.FirebaseLogFileListAdapter;
 import com.epicodus.loglegal.models.LogFile;
+import com.epicodus.loglegal.util.OnStartDragListener;
+import com.epicodus.loglegal.util.SimpleItemTouchHelperCallback;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
@@ -34,7 +37,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, OnStartDragListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private String mCurrentUserId;
     private FirebaseLogFileListAdapter mAdapter;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.drawer_layout) DrawerLayout mDrawer;
@@ -102,9 +106,19 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setUpRecyclerView() {
-        mAdapter = new FirebaseLogFileListAdapter(mQuery, LogFile.class);
+        mAdapter = new FirebaseLogFileListAdapter(mQuery, LogFile.class, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+    }
+
+    // Handles swipes
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 
 

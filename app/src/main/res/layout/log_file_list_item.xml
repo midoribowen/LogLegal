@@ -15,7 +15,7 @@
         android:paddingLeft="5dp"
         android:id="@+id/logFileNameTextView"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Log File Name"
+        android:text="File Name"
         android:textColor="@color/colorAccent" />
 
 </LinearLayout>
