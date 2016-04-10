@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.loglegal.LogLegalApplication;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder {
     @Bind(R.id.logFileNameTextView) TextView mLogFileNameTextView;
+    @Bind(R.id.dragIcon) ImageView mDragIcon;
     private Context mContext;
     private ArrayList<LogFile> mLogFiles = new ArrayList<>();
     private Firebase mFirebaseRef;
@@ -51,12 +53,19 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.O
     }
     @Override
     public void onItemSelected() {
-        // add animation
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
     }
 
     @Override
     public void onItemClear() {
-        // add animation
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
     }
 
 }
