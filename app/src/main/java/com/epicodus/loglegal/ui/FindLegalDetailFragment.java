@@ -33,8 +33,6 @@ public class FindLegalDetailFragment extends Fragment implements View.OnClickLis
     @Bind(R.id.legalPhoneTextView) TextView mLegalPhoneTextView;
     @Bind(R.id.legalAddressTextView) TextView mLegalAddressTextView;
 
-    @Bind(R.id.sendEmailButton) Button mSendEmailButton;
-
     private Legal mLegal;
     private static final int MAX_WIDTH = 400;
     private static final int MAX_HEIGHT = 300;

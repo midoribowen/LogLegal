@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.adapters.FindLegalPagerAdapter;
 import com.epicodus.loglegal.models.Legal;
+import com.epicodus.loglegal.util.ScaleAndFadePageTransformer;
 
 import org.parceler.Parcels;
 
@@ -31,5 +32,6 @@ public class FindLegalDetailActivity extends AppCompatActivity {
         adapterViewPager = new FindLegalPagerAdapter(getSupportFragmentManager(), mLegalOffices);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
+        mViewPager.setPageTransformer(true, new ScaleAndFadePageTransformer());
     }
 }

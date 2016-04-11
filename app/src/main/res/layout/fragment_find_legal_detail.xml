@@ -115,16 +115,6 @@
 
             </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sendEmailButton"
-                android:text="Send an Email"
-                android:textColor="@color/colorIcons"
-                android:textSize="15sp"
-                android:background="@color/colorAccent"
-                android:layout_alignParentBottom="true"/>
-
         </RelativeLayout>
 
     </LinearLayout>
