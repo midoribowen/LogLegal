@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, OnStartDragListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    private Firebase mFirebaseRef;
 
     private Query mQuery;
-    private Firebase mFirebaseRef;
     private String mCurrentUserId;
     private FirebaseLogFileListAdapter mAdapter;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -107,12 +107,17 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPause() {
-        super.onPause();
-        for (LogFile logFile : mAdapter.getItems()) {
-            logFile.setIndex(Integer.toString(mAdapter.getItems().indexOf(logFile)));
-            mFirebaseRef.child("logfiles/" + mCurrentUserId + "/"
-                    + logFile.getLogFileId())
-                    .setValue(logFile);
+        AuthData authData = mFirebaseRef.getAuth();
+        if (authData != null) {
+            super.onPause();
+            for (LogFile logFile : mAdapter.getItems()) {
+                logFile.setIndex(Integer.toString(mAdapter.getItems().indexOf(logFile)));
+                mFirebaseRef.child("logfiles/" + mCurrentUserId + "/"
+                        + logFile.getLogFileId())
+                        .setValue(logFile);
+            }
+        } else {
+            super.onPause();
         }
     }
 

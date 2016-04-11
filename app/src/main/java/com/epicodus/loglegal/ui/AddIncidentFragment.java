@@ -1,6 +1,8 @@
 package com.epicodus.loglegal.ui;
 
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +18,8 @@ import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.Incident;
 import com.firebase.client.Firebase;
+
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,7 +59,6 @@ public class AddIncidentFragment extends DialogFragment implements View.OnClickL
         logFileId = bundle.getString("logFileId");
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef().child("incidents/" + logFileId).push();
-
         mAddIncidentButton.setOnClickListener(this);
         return view;
     }
@@ -73,6 +76,7 @@ public class AddIncidentFragment extends DialogFragment implements View.OnClickL
             dismiss();
         }
     }
+
 
     private void createIncident(String incidentDate, String incidentTime, String witnesses, String description, String policeBadgeNumber) {
         Incident incident = new Incident(logFileId, mFirebaseRef.getKey().toString(), incidentDate, incidentTime, witnesses, description, policeBadgeNumber);

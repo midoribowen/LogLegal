@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorIcons">
+    android:background="@color/colorPrimary">
 
 
     <android.support.v7.widget.CardView
@@ -23,25 +23,27 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_centerVertical="true"
-                android:id="@+id/logFileNameTextView"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="File Name"
-                android:textColor="@color/colorPrimaryText" />
-
             <ImageView
                 android:id="@+id/dragIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_reorder_black_24dp"
                 android:layout_gravity="right"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logFileNameTextView"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="File Name"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/dragIcon"
+                android:layout_toRightOf="@+id/dragIcon"
+                android:layout_marginLeft="8dp" />
 
         </RelativeLayout>
 
