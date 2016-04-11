@@ -5,83 +5,94 @@
     android:padding="5dp"
     tools:context="com.epicodus.loglegal.ui.AddIncidentFragment">
 
-    <TextView
+
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/add_new_incident_title"
-        android:id="@+id/newIncidentHeader"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryText"
-        android:textStyle="bold" />
+        android:id="@+id/scrollView" >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/newIncidentHeader"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/incidentDateEditText"
-        android:inputType="date"
-        android:ems="10"
-        android:hint="@string/date_label"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/add_new_incident_title"
+                android:id="@+id/newIncidentHeader"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/incidentDateEditText"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/incidentTimeEditText"
-        android:inputType="time"
-        android:ems="10"
-        android:hint="@string/time_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newIncidentHeader"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/incidentDateEditText"
+                android:inputType="date"
+                android:ems="10"
+                android:hint="@string/date_label"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/incidentTimeEditText"
-        android:layout_centerHorizontal="true"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/witnessesEditText"
-        android:hint="@string/witnesses_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/incidentDateEditText"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/incidentTimeEditText"
+                android:inputType="time"
+                android:ems="10"
+                android:hint="@string/time_label"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/witnessesEditText"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/descriptionEditText"
-        android:hint="@string/description_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/incidentTimeEditText"
+                android:layout_centerHorizontal="true"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/witnessesEditText"
+                android:hint="@string/witnesses_label"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/descriptionEditText"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/policeBadgeNumberEditText"
-        android:ems="10"
-        android:hint="@string/police_badge_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/witnessesEditText"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/descriptionEditText"
+                android:hint="@string/description_label"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_new_incident_button_description"
-        android:id="@+id/addIncidentButton"
-        android:layout_below="@+id/policeBadgeNumberEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorIcons"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionEditText"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/policeBadgeNumberEditText"
+                android:ems="10"
+                android:hint="@string/police_badge_label"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_incident_button_description"
+                android:id="@+id/addIncidentButton"
+                android:layout_below="@+id/policeBadgeNumberEditText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/colorAccent"
+                android:textColor="@color/colorIcons"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
