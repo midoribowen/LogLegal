@@ -5,26 +5,9 @@
     android:background="@color/colorPrimary"
     tools:context="com.epicodus.loglegal.ui.LoginFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:id="@+id/appTitle"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColor="@color/colorAccent"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:paddingTop="55dp"
-        android:paddingBottom="55dp"
-        android:background="@color/colorIcons" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appTitle">
+        android:layout_height="match_parent">
 
         <EditText
             android:layout_width="match_parent"
