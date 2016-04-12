@@ -3,15 +3,19 @@ package com.epicodus.loglegal.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.loglegal.LogLegalApplication;
 import com.epicodus.loglegal.R;
 import com.epicodus.loglegal.models.LogFile;
 import com.epicodus.loglegal.ui.LogfileActivity;
+import com.epicodus.loglegal.ui.MainActivity;
 import com.epicodus.loglegal.util.ItemTouchHelperViewHolder;
+import com.epicodus.loglegal.util.OnDoubleTapListener;
 import com.firebase.client.Firebase;
 
 import org.parceler.Parcels;
@@ -28,7 +32,7 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.O
     private ArrayList<LogFile> mLogFiles = new ArrayList<>();
     private Firebase mFirebaseRef;
 
-    public LogFileViewHolder(View itemView, ArrayList<LogFile> logFiles) {
+    public LogFileViewHolder(final View itemView, ArrayList<LogFile> logFiles) {
         super(itemView);
         mContext = itemView.getContext();
         ButterKnife.bind(this, itemView);
@@ -37,6 +41,14 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.O
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
 
         itemView.setOnClickListener(this);
+        itemView.setOnTouchListener(new OnDoubleTapListener(itemView.getContext()) {
+            @Override
+            public void onDoubleTap(MotionEvent motionevent) {
+                // Add ability to show first incident listed with slide-down animation
+                // Incident will display date and first 40 characters of description
+                Toast.makeText(itemView.getContext(), "Double Tap", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void bindLogFile(LogFile logFile) {
@@ -51,6 +63,7 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.O
             mContext.startActivity(intent);
         }
     }
+
     @Override
     public void onItemSelected() {
         itemView.animate()
