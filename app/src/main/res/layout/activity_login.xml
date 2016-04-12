@@ -6,86 +6,11 @@
     android:background="@color/colorPrimary"
     tools:context="com.epicodus.loglegal.ui.LoginActivity">
 
-
-    <TextView
-        android:layout_width="match_parent"
+    <fragment
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:id="@+id/appTitle"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColor="@color/colorAccent"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:paddingTop="55dp"
-        android:paddingBottom="55dp"
-        android:background="@color/colorIcons" />
+        android:id="@+id/fragmentLogin"
+        android:name="com.epicodus.loglegal.ui.LoginFragment"
+        tools:layout="@layout/fragment_login"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appTitle">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:padding="5dp"
-            android:id="@+id/emailEditText"
-            android:background="@color/colorIcons"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:textColorHint="@color/colorSecondaryText"
-            android:textSize="20sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_below="@+id/emailEditText"
-            android:padding="5dp"
-            android:id="@+id/passwordEditText"
-            android:background="@color/colorIcons"
-            android:inputType="textPassword"
-            android:hint="Password"
-            android:textColorHint="@color/colorSecondaryText"
-            android:textSize="20sp"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/passwordEditText"
-            android:padding="10dp"
-            android:id="@+id/loginButton"
-            android:background="@color/colorAccent"
-            android:text="Log in"
-            android:textColor="@color/colorIcons"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:id="@+id/registerButton"
-            android:background="@color/colorPrimaryLight"
-            android:text="Register"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
 </RelativeLayout>
