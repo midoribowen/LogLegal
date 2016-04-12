@@ -60,18 +60,17 @@ Code reviews currently included:
 ## To Do
 
 __Priority:__
-* put UI in fragment in MainActivity, and LogfileActivity
-* implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout
+* allow users to double tap on a log file to display the most recent incident entry
+* add undo or confirmation for delete
 
 Secondary:
-* delete related incidents when logfiles are deleted
-* add undo or confirmation for delete
-* allow users to double tap on a log file to display the most recent incident entry
 * implement a date picker dialog and time picker dialog for add incident form
+* sort incidents by date
+* put UI in fragment in MainActivity, and LogfileActivity
+* Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location
+* implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout
 * fix incident list item styling to mirror logfile list item styling
 
-* Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location
-* Alternate landscape resource with map on left, RecyclerView on right
 * material design to 'pretty up' the app
   * Watch udacity course https://www.udacity.com/course/material-design-for-android-developers--ud862
 
