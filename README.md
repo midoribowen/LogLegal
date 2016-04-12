@@ -1,6 +1,6 @@
 # Log Legal
 
-#### A legal logbook for users to track incidents, Friday April 8th, 2016
+#### A legal logbook for users to track incidents, Monday April 11th, 2016
 
 #### By Midori Bowen
 
@@ -19,6 +19,7 @@ A User can:
 * search for law offices by zipcode and view them on a map with a list of law offices below
 * view details about each law office by 'clicking' on a list item
 * in the the detail view, click on the Yelp link and go to the link in a browser or in the Yelp app; click on phone numbers and dial the phone number on their app; click on an address and look up the address in the user's maps app
+
 
 ---------------
 
@@ -59,8 +60,8 @@ Code reviews currently included:
 ## To Do
 
 __Priority:__
-* put UI in fragment in LoginActivity, MainActivity, and LogfileActivity
-* implement an alternate resource for Login when in landscape
+* put UI in fragment in MainActivity, and LogfileActivity
+* implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout
 
 Secondary:
 * delete related incidents when logfiles are deleted
