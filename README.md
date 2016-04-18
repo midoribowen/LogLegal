@@ -60,7 +60,6 @@ Code reviews currently included:
 ## To Do
 
 __Priority:__
-* allow users to double tap on a log file to display the most recent incident entry
 * add undo or confirmation for delete
 
 Secondary:
@@ -73,6 +72,9 @@ Secondary:
 
 * material design to 'pretty up' the app
   * Watch udacity course https://www.udacity.com/course/material-design-for-android-developers--ud862
+
+Maybes:
+* allow users to double tap on a log file to display the most recent incident entry
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
