@@ -25,56 +25,37 @@ A User can:
 
 LogLegal is an independent project for the March 2016 Android class at Epicodus. It is a project that builds each week and therefore demonstrates proficiency in each week's lessons.
 
-Code reviews currently included:
-* __Gestures, Animations, & Flexible UIs (Week 4)__
-  * Includes at least one gesture listener
-  * Uses animations
-  * Implements at least one alternate resource
+Technologies Included:
+* gesture listeners
+* animations
+* alternate resources
+* Firebase user authentication
+* Data stored and retrieved from Firebase
+* RecyclerViews for displaying information
+* Error and status dialogs
+* SearchView widget
+* Queries data from the Yelp API
+* implicit intents
+* Butterknife for binding views
 
+## Product Backlog
 
-* __Data Persistence (Week 3)__
-  * Implement Firebase user authentication
-  * Save and retrieve data using Firebase, with data structured properly (i.e. flat not nested)
-  * Employ the Firebase-RecyclerAdapter to display from the database
-  * Use SharedPreferences to save an important piece of data
-  * Utilize dialogs to inform users of errors, login status, etc.
-  * Use a SearchView widget to gather user input
+__Priority PBI:__
+* add undo or confirmation for delete (not started)
 
+Secondary PBIs:
+* implement a date picker dialog and time picker dialog for add incident form (not started)
+* sort incidents by date (not started)
+* put UI in fragment in MainActivity, and LogfileActivity (not started)
+* Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location (not started)
+* implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout (not started)
+* fix incident list item styling to mirror logfile list item styling (not started)
 
-* __Web Service Backends and Fragments (Week 2)__
-  * Implement OkHttp to retrieve data from a backend
-  * Create a data model to store the data
-  * Display a list of information using a RecyclerView
-  * Use fragments and a pager adapter to swipe through views
-  * Incorporate at least one implicit intent
-
-
-* __User Interface Basics (Week 1)__
-  * At least 3 Activities the user can navigate to
-  * Display a list of information
-  * Gather user input and pass it to another activity
-  * Use Butterknife to bind all views
-  * Use View.OnClickListener interface to set click listeners
-
-
-## To Do
-
-__Priority:__
-* add undo or confirmation for delete
-
-Secondary:
-* implement a date picker dialog and time picker dialog for add incident form
-* sort incidents by date
-* put UI in fragment in MainActivity, and LogfileActivity
-* Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location
-* implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout
-* fix incident list item styling to mirror logfile list item styling
-
-* material design to 'pretty up' the app
+* material design to 'pretty up' the app (in progress)
   * Watch udacity course https://www.udacity.com/course/material-design-for-android-developers--ud862
 
 Maybes:
-* allow users to double tap on a log file to display the most recent incident entry
+* allow users to double tap on a log file to display the most recent incident entry (attempted with onTouchListener in ViewHolder -- needs different implementation)
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
