@@ -1,14 +1,21 @@
 package com.epicodus.loglegal.util;
 
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
+    private final Context mContext;
+    private final RecyclerView mRecyclerView;
     private final ItemTouchHelperAdapter mAdapter;
 
-    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    public SimpleItemTouchHelperCallback(Context context, RecyclerView recyclerView, ItemTouchHelperAdapter adapter) {
+        mContext = context;
+        mRecyclerView = recyclerView;
         mAdapter = adapter;
     }
 
@@ -39,8 +46,27 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+    public void onSwiped(final RecyclerView.ViewHolder viewHolder, int i) {
+        final int position = viewHolder.getAdapterPosition();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+        alertDialogBuilder.setTitle("Delete Item?");
+        alertDialogBuilder.setMessage("This action cannot be undone. Are you sure you want to delete this item?");
+        alertDialogBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mAdapter.onItemDismiss(position);
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//              // TODO FIX BUG WHERE RECYCLERVIEW ITEM DOES NOT RETURN TO ITS PREVIOUS STATE
+                clearView(mRecyclerView, viewHolder);
+                mRecyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
+            }
+        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override
@@ -62,4 +88,5 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
             itemViewHolder.onItemClear();
         }
     }
+
 }
