@@ -56,7 +56,7 @@ public class FirebaseLogFileListAdapter extends FirebaseRecyclerAdapter<LogFileV
     }
 
     @Override
-    public void onItemDismiss(int position) {
+    public void onItemDismiss(final int position) {
         Firebase ref = LogLegalApplication.getAppInstance().getFirebaseRef();
         ref.child("logfiles/" + ref.getAuth().getUid() + "/" + getItem(position).getLogFileId()).removeValue();
         ref.child("incidents/" + getItem(position).getLogFileId()).removeValue();

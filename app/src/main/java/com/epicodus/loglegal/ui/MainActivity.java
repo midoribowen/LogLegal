@@ -1,25 +1,23 @@
 package com.epicodus.loglegal.ui;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.MenuInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.Toast;
 
 import com.epicodus.loglegal.LogLegalApplication;
@@ -31,7 +29,6 @@ import com.epicodus.loglegal.util.SimpleItemTouchHelperCallback;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
-import com.firebase.client.core.Context;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     public static final String TAG = MainActivity.class.getSimpleName();
     private Firebase mFirebaseRef;
 
+    private Context mContext = MainActivity.this;
     private Query mQuery;
     private String mCurrentUserId;
     private FirebaseLogFileListAdapter mAdapter;
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         setTitle(R.string.main_activity_title);
         ButterKnife.bind(this);
-
 
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
@@ -126,19 +123,19 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
 
-        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mAdapter);
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mContext, mRecyclerView, mAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
-    // Handles swipes
+    // Handles drags
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
     }
 
 
-    // Handles button clicks for adding a new incident, navigating to findLegalActivity, and navigating to LogfileActivity
+    // Handles button clicks for adding a new logfile
     @Override
     public void onClick(View view) {
         switch(view.getId()) {

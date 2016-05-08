@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         card_view:cardCornerRadius="1dp"
-        android:elevation="8dp">
+        card_view:cardElevation="8dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -24,26 +23,27 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/dragIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_reorder_black_24dp"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:id="@+id/dragIcon"
+                android:src="@drawable/ic_reorder_black_24dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/logFileNameTextView"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="File Name"
-                android:textColor="@color/colorPrimaryText"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/dragIcon"
                 android:layout_toRightOf="@+id/dragIcon"
-                android:layout_marginLeft="8dp" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/logFileNameTextView"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="File Name"
+                android:textColor="@color/colorPrimaryText" />
 
         </RelativeLayout>
 

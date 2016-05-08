@@ -1,5 +1,6 @@
 package com.epicodus.loglegal.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -41,14 +42,6 @@ public class LogFileViewHolder extends RecyclerView.ViewHolder implements View.O
         mFirebaseRef = LogLegalApplication.getAppInstance().getFirebaseRef();
 
         itemView.setOnClickListener(this);
-//        itemView.setOnTouchListener(new OnDoubleTapListener(itemView.getContext()) {
-//            @Override
-//            public void onDoubleTap(MotionEvent motionevent) {
-//                // Add ability to show first incident listed with slide-down animation
-//                // Incident will display date and first 40 characters of description
-//                Toast.makeText(itemView.getContext(), "Double Tap", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     public void bindLogFile(LogFile logFile) {
