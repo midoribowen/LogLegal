@@ -60,7 +60,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//              // TODO FIX BUG WHERE RECYCLERVIEW ITEM DOES NOT RETURN TO ITS PREVIOUS STATE
                 clearView(mRecyclerView, viewHolder);
                 mRecyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
             }
