@@ -41,12 +41,11 @@ Technologies Included:
 ## Product Backlog
 
 __Priority PBI:__
-* add undo or confirmation for delete (not started)
+* put UI in fragment in MainActivity, and LogfileActivity (not started)
 
 Secondary PBIs:
 * implement a date picker dialog and time picker dialog for add incident form (not started)
 * sort incidents by date (not started)
-* put UI in fragment in MainActivity, and LogfileActivity (not started)
 * Google map fragment in FindLegalListActivity to display markers for each of the offices near the current location (not started)
 * implement an alternate resource for FindLegalListActivity when in landscape, with map and RecyclerView elements in a horizontal linear layout (not started)
 * fix incident list item styling to mirror logfile list item styling (not started)
