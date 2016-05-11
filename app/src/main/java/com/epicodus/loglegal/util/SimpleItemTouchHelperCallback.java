@@ -7,6 +7,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.epicodus.loglegal.R;
+
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private final Context mContext;
@@ -49,15 +51,15 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public void onSwiped(final RecyclerView.ViewHolder viewHolder, int i) {
         final int position = viewHolder.getAdapterPosition();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-        alertDialogBuilder.setTitle("Delete Item?");
-        alertDialogBuilder.setMessage("This action cannot be undone. Are you sure you want to delete this item?");
-        alertDialogBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setTitle(R.string.delete_confirmation_title);
+        alertDialogBuilder.setMessage(R.string.delete_confirmation_string);
+        alertDialogBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mAdapter.onItemDismiss(position);
             }
         });
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 clearView(mRecyclerView, viewHolder);
